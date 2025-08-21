@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.logicielapp.controller.SimUnlockController">
+   <top>
+      <VBox styleClass="header-section">
+         <children>
+            <HBox alignment="CENTER" spacing="10.0">
+               <children>
+                  <Label fx:id="lblTitle" styleClass="title-label" text="🔓 Déverrouillage SIM (Verrouillage Opérateur)" />
+               </children>
+            </HBox>
+            <Label fx:id="lblDeviceInfo" styleClass="subtitle-label" text="📱 Aucun appareil détecté" />
+            <Separator />
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </VBox>
+   </top>
+   <center>
+      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED">
+         <content>
+            <VBox spacing="15.0">
+               <children>
+                  <!-- Section Détection d'Appareil -->
+                  <VBox styleClass="section-box-dark">
+                     <children>
+                        <Label styleClass="section-title-dark" text="📱 Détection d'Appareil" />
+                        <HBox alignment="CENTER_LEFT" spacing="10.0">
+                           <children>
+                              <Button fx:id="btnDetectDevice" onAction="#handleDetectDevice" styleClass="action-button-dark" text="🔍 Détecter Appareil USB" />
+                              <Label text="ou saisissez les informations manuellement ci-dessous" styleClass="info-text-dark" />
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
+                     </padding>
+                  </VBox>
+
+                  <!-- Section Informations de l'Appareil -->
+                  <VBox styleClass="section-box-dark">
+                     <children>
+                        <Label styleClass="section-title-dark" text="📋 Informations de l'Appareil" />
+                        <GridPane hgap="10.0" vgap="10.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="NEVER" minWidth="120.0" />
+                              <ColumnConstraints hgrow="ALWAYS" />
+                           </columnConstraints>
+                           <children>
+                              <Label text="IMEI:" GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="info-label-dark" />
+                              <TextField fx:id="txtIMEI" promptText="Saisissez le numéro IMEI (15 chiffres)" GridPane.columnIndex="1" GridPane.rowIndex="0" styleClass="text-field-dark" />
+                              
+                              <Label text="Numéro de série:" GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="info-label-dark" />
+                              <TextField fx:id="txtSerialNumber" promptText="Numéro de série de l'appareil" GridPane.columnIndex="1" GridPane.rowIndex="1" styleClass="text-field-dark" />
+                              
+                              <Label text="Opérateur:" GridPane.columnIndex="0" GridPane.rowIndex="2" styleClass="info-label-dark" />
+                              <ComboBox fx:id="cmbCarrier" promptText="Sélectionnez l'opérateur actuel" GridPane.columnIndex="1" GridPane.rowIndex="2" styleClass="combo-box-dark" />
+                              
+                              <Label text="Modèle:" GridPane.columnIndex="0" GridPane.rowIndex="3" styleClass="info-label-dark" />
+                              <ComboBox fx:id="cmbDeviceModel" promptText="Sélectionnez le modèle de l'appareil" GridPane.columnIndex="1" GridPane.rowIndex="3" styleClass="combo-box-dark" />
+                           </children>
+                        </GridPane>
+                     </children>
+                     <padding>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="10.0" />
+                     </padding>
+                  </VBox>
+
+                  <!-- Section Statut du Verrouillage -->
+                  <VBox styleClass="section-box-dark">
+                     <children>
+                        <Label styleClass="section-title-dark" text="🔒 Statut du Verrouillage Opérateur" />
+                        <HBox alignment="CENTER_LEFT" spacing="15.0">
+                           <children>
+                              <Button fx:id="btnCheckCarrierLock" onAction="#handleCheckCarrierLock" styleClass="action-button-dark" text="🔍 Vérifier Verrouillage" />
+                              <Label fx:id="lblCarrierStatus" text="Statut inconnu - Cliquez sur 'Vérifier'" styleClass="info-text-dark" />
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="10.0" />
+                     </padding>
+                  </VBox>
+
+                  <!-- Section Déverrouillage -->
+                  <VBox styleClass="section-box">
+                     <children>
+                        <Label styleClass="section-title" text="🔓 Processus de Déverrouillage" />
+                        <HBox alignment="CENTER_LEFT" spacing="10.0">
+                           <children>
+                              <Button fx:id="btnStartUnlock" onAction="#handleStartUnlock" styleClass="success-button-dark" text="🚀 Démarrer Déverrouillage" />
+                              <Button fx:id="btnStopUnlock" onAction="#handleStopUnlock" styleClass="danger-button-dark" text="⏹ Arrêter" />
+                              <Button fx:id="btnGenerateUnlockCode" onAction="#handleGenerateUnlockCode" styleClass="warning-button-dark" text="🔢 Générer Code" />
+                           </children>
+                        </HBox>
+                        <VBox spacing="5.0">
+                           <children>
+                              <Label fx:id="lblUnlockStatus" text="⏳ En attente..." />
+                              <ProgressBar fx:id="progressUnlock" prefWidth="400.0" />
+                              <Label fx:id="lblProgress" text="" />
+                           </children>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="10.0" />
+                     </padding>
+                  </VBox>
+
+                  <!-- Section Résultats du Déverrouillage -->
+                  <VBox fx:id="unlockInfoPane" styleClass="section-box">
+                     <children>
+                        <Label fx:id="lblUnlockInstructions" styleClass="section-title" text="📋 Instructions de Déverrouillage" />
+                        <VBox spacing="10.0">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                 <children>
+                                    <Label styleClass="info-label" text="🔓 Code de Déverrouillage:" />
+                                    <Label fx:id="lblUnlockCode" styleClass="code-label" text="Génération en cours..." />
+                                 </children>
+                              </HBox>
+                              <TextArea fx:id="txtUnlockSteps" editable="false" prefRowCount="8" wrapText="true" />
+                           </children>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="10.0" />
+                     </padding>
+                  </VBox>
+
+                  <!-- Section Console -->
+                  <VBox styleClass="section-box">
+                     <children>
+                        <Label styleClass="section-title" text="📟 Console de Déverrouillage" />
+                        <TextArea fx:id="txtConsole" editable="false" prefRowCount="12" wrapText="true" />
+                     </children>
+                     <padding>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="10.0" />
+                     </padding>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="10.0" />
+               </padding>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </center>
+   <bottom>
+      <VBox styleClass="footer-section">
+         <children>
+            <Separator />
+            <VBox alignment="CENTER" spacing="5.0">
+               <children>
+                  <Label styleClass="footer-text" text="Logiciel developpe par : F.Badji" />
+                  <Label styleClass="footer-text" text="Logiciel de Déblocage Mobile - © 2025" />
+               </children>
+            </VBox>
+            <HBox alignment="CENTER_RIGHT" spacing="10.0">
+               <children>
+                  <Button fx:id="btnClose" onAction="#handleClose" styleClass="secondary-button" text="🚪 Fermer" />
+               </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="20.0" right="20.0" top="5.0" />
+         </padding>
+      </VBox>
+   </bottom>
+</BorderPane>

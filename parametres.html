@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paramètres - Logiciel de Déblocage Mobile</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1a252f 0%, #2c3e50 100%); /* identique au footer sombre */
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .nav-btn {
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .nav-btn:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+        
+        .nav-btn.active {
+            background: rgba(255,255,255,0.4);
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .settings-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .section-title {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .setting-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .setting-item:last-child {
+            border-bottom: none;
+        }
+        
+        .setting-info {
+            flex: 1;
+        }
+        
+        .setting-label {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        
+        .setting-description {
+            font-size: 0.9em;
+            color: #666;
+        }
+        
+        .setting-control {
+            margin-left: 20px;
+        }
+        
+        .toggle-switch {
+            position: relative;
+            width: 60px;
+            height: 30px;
+            background: #ccc;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .toggle-switch.active {
+            background: #4facfe;
+        }
+        
+        .toggle-slider {
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 24px;
+            height: 24px;
+            background: white;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+        
+        .toggle-switch.active .toggle-slider {
+            transform: translateX(30px);
+        }
+        
+        .input-field {
+            padding: 10px 15px;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 14px;
+            width: 200px;
+            transition: border-color 0.3s ease;
+        }
+        
+        .input-field:focus {
+            outline: none;
+            border-color: #4facfe;
+        }
+        
+        .select-field {
+            padding: 10px 15px;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 14px;
+            width: 200px;
+            background: white;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(79, 172, 254, 0.3);
+        }
+        
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-left: 10px;
+        }
+        
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+        
+        .alert {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        .alert.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .alert.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>⚙️ Paramètres</h1>
+            <p>Configuration et préférences du système</p>
+            
+            <div class="nav-buttons">
+                <a href="index.html" class="nav-btn">🏠 Accueil</a>
+                <a href="statistiques.html" class="nav-btn">📊 Statistiques</a>
+                <a href="parametres.html" class="nav-btn active">⚙️ Paramètres</a>
+                <a href="aide.html" class="nav-btn">❓ Aide</a>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div id="saveAlert" class="alert success">
+                ✅ Paramètres sauvegardés avec succès !
+            </div>
+            
+            <!-- API Configuration -->
+            <div class="settings-section">
+                <h3 class="section-title">🔌 Configuration API</h3>
+                
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <div class="setting-label">API DHRU Fusion</div>
+                        <div class="setting-description">Activer l'API DHRU pour la vérification IMEI</div>
+                    </div>
+                    <div class="setting-control">
+                        <div class="toggle-switch active" id="dhru-toggle" onclick="toggleSwitch(this)">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <div class="setting-label">Clé API DHRU</div>
+                        <div class="setting-description">Votre clé d'accès API DHRU</div>
+                    </div>
+                    <div class="setting-control">
+                        <input type="password" class="input-field" id="dhru-api-key" value="8AE-VC2-G18-1K7-K73-8FI-4H4-2AU" placeholder="Entrez votre clé API">
+                    </div>
+                </div>
+                
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <div class="setting-label">API iFreeCheck</div>
+                        <div class="setting-description">API de fallback pour la vérification</div>
+                    </div>
+                    <div class="setting-control">
+                        <div class="toggle-switch active" id="ifree-toggle" onclick="toggleSwitch(this)">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <div class="setting-label">Timeout API (secondes)</div>
+                        <div class="setting-description">Délai d'attente pour les requêtes API</div>
+                    </div>
+                    <div class="setting-control">
+                        <input type="number" class="input-field" id="api-timeout" value="15" min="5" max="60">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Validation Settings -->
+            <div class="settings-section">
+                <h3 class="section-title">✅ Paramètres de Validation</h3>
+                
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <div class="setting-label">Validation Luhn</div>
+                        <div class="setting-description">Vérifier le checksum Luhn des IMEI</div>
+                    </div>
+                    <div class="setting-control">
+                        <div class="toggle-switch active" id="luhn-toggle" onclick="toggleSwitch(this)">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <div class="setting-label">Détection IMEI Fake</div>
+                        <div class="setting-description">Rejeter les IMEI évidemment faux</div>
+                    </div>
+                    <div class="setting-control">
+                        <div class="toggle-switch active" id="fake-detection-toggle" onclick="toggleSwitch(this)">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <div class="setting-label">Base TAC GSMA</div>
+                        <div class="setting-description">Utiliser la base TAC étendue (60+ codes)</div>
+                    </div>
+                    <div class="setting-control">
+                        <div class="toggle-switch active" id="gsma-toggle" onclick="toggleSwitch(this)">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <div class="setting-label">Mode de validation</div>
+                        <div class="setting-description">Niveau de strictesse de la validation</div>
+                    </div>
+                    <div class="setting-control">
+                        <select class="select-field" id="validation-mode">
+                            <option value="strict">Strict</option>
+                            <option value="normal" selected>Normal</option>
+                            <option value="permissive">Permissif</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Interface Settings -->
+            <div class="settings-section">
+                <h3 class="section-title">🎨 Interface Utilisateur</h3>
+                
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <div class="setting-label">Thème sombre</div>
+                        <div class="setting-description">Activer le mode sombre</div>
+                    </div>
+                    <div class="setting-control">
+                        <div class="toggle-switch" id="dark-theme-toggle" onclick="toggleSwitch(this)">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <div class="setting-label">Animations</div>
+                        <div class="setting-description">Activer les animations d'interface</div>
+                    </div>
+                    <div class="setting-control">
+                        <div class="toggle-switch active" id="animations-toggle" onclick="toggleSwitch(this)">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <div class="setting-label">Langue</div>
+                        <div class="setting-description">Langue de l'interface</div>
+                    </div>
+                    <div class="setting-control">
+                        <select class="select-field" id="language-select">
+                            <option value="fr" selected>Français</option>
+                            <option value="en">English</option>
+                            <option value="es">Español</option>
+                            <option value="ar">العربية</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <div class="setting-label">Notifications</div>
+                        <div class="setting-description">Afficher les notifications système</div>
+                    </div>
+                    <div class="setting-control">
+                        <div class="toggle-switch active" id="notifications-toggle" onclick="toggleSwitch(this)">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Security Settings -->
+            <div class="settings-section">
+                <h3 class="section-title">🔒 Sécurité</h3>
+                
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <div class="setting-label">Logs détaillés</div>
+                        <div class="setting-description">Enregistrer les logs détaillés</div>
+                    </div>
+                    <div class="setting-control">
+                        <div class="toggle-switch active" id="logs-toggle" onclick="toggleSwitch(this)">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <div class="setting-label">Masquer les IMEI</div>
+                        <div class="setting-description">Masquer partiellement les IMEI dans les logs</div>
+                    </div>
+                    <div class="setting-control">
+                        <div class="toggle-switch active" id="mask-imei-toggle" onclick="toggleSwitch(this)">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <div class="setting-label">Durée de session (minutes)</div>
+                        <div class="setting-description">Durée avant déconnexion automatique</div>
+                    </div>
+                    <div class="setting-control">
+                        <input type="number" class="input-field" id="session-duration" value="60" min="15" max="480">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Save Buttons -->
+            <div class="settings-section">
+                <button class="btn-primary" onclick="saveSettings()">💾 Sauvegarder les Paramètres</button>
+                <button class="btn-secondary" onclick="resetSettings()">🔄 Réinitialiser</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            loadSettings();
+        });
+
+        async function loadSettings() {
+            try {
+                const response = await fetch('/parameters/api/settings');
+                const settings = await response.json();
+                
+                // Charger les paramètres API
+                if (settings.apiConfig) {
+                    const apiConfig = settings.apiConfig;
+                    setToggleState('dhru-toggle', apiConfig.dhruEnabled);
+                    setInputValue('dhru-api-key', apiConfig.dhruApiKey);
+                    setToggleState('ifree-toggle', apiConfig.ifreeCheckEnabled);
+                    setInputValue('api-timeout', apiConfig.apiTimeout);
+                }
+                
+                // Charger les paramètres de validation
+                if (settings.validation) {
+                    const validation = settings.validation;
+                    setToggleState('luhn-toggle', validation.luhnValidation);
+                    setToggleState('fake-detection-toggle', validation.fakeDetection);
+                    setToggleState('gsma-toggle', validation.gsmaDatabase);
+                    setSelectValue('validation-mode', validation.validationMode);
+                }
+                
+                // Charger les paramètres UI
+                if (settings.ui) {
+                    const ui = settings.ui;
+                    setToggleState('dark-theme-toggle', ui.darkTheme);
+                    setToggleState('animations-toggle', ui.animations);
+                    setSelectValue('language-select', ui.language);
+                    setToggleState('notifications-toggle', ui.notifications);
+                }
+                
+                // Charger les paramètres de sécurité
+                if (settings.security) {
+                    const security = settings.security;
+                    setToggleState('logs-toggle', security.detailedLogs);
+                    setToggleState('mask-imei-toggle', security.maskImei);
+                    setInputValue('session-duration', security.sessionDuration);
+                }
+                
+            } catch (error) {
+                console.error('Erreur lors du chargement des paramètres:', error);
+                showAlert('Erreur lors du chargement des paramètres', 'error');
+            }
+        }
+
+        function toggleSwitch(element) {
+            element.classList.toggle('active');
+        }
+        
+        async function saveSettings() {
+            try {
+                const settings = collectSettings();
+                
+                const response = await fetch('/parameters/api/settings', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(settings)
+                });
+                
+                const result = await response.json();
+                
+                if (response.ok) {
+                    showAlert(result.message, 'success');
+                } else {
+                    showAlert(result.message, 'error');
+                }
+                
+            } catch (error) {
+                console.error('Erreur lors de la sauvegarde:', error);
+                showAlert('Erreur lors de la sauvegarde des paramètres', 'error');
+            }
+        }
+        
+        async function resetSettings() {
+            if (confirm('Êtes-vous sûr de vouloir réinitialiser tous les paramètres ?')) {
+                try {
+                    const response = await fetch('/parameters/api/settings/reset', {
+                        method: 'POST'
+                    });
+                    
+                    const result = await response.json();
+                    
+                    if (response.ok) {
+                        showAlert(result.message, 'success');
+                        setTimeout(() => {
+                            location.reload();
+                        }, 1500);
+                    } else {
+                        showAlert(result.message, 'error');
+                    }
+                    
+                } catch (error) {
+                    console.error('Erreur lors de la réinitialisation:', error);
+                    showAlert('Erreur lors de la réinitialisation', 'error');
+                }
+            }
+        }
+
+        function collectSettings() {
+            return {
+                apiConfig: {
+                    dhruEnabled: getToggleState('dhru-toggle'),
+                    dhruApiKey: getInputValue('dhru-api-key'),
+                    ifreeCheckEnabled: getToggleState('ifree-toggle'),
+                    apiTimeout: parseInt(getInputValue('api-timeout'))
+                },
+                validation: {
+                    luhnValidation: getToggleState('luhn-toggle'),
+                    fakeDetection: getToggleState('fake-detection-toggle'),
+                    gsmaDatabase: getToggleState('gsma-toggle'),
+                    validationMode: getSelectValue('validation-mode')
+                },
+                ui: {
+                    darkTheme: getToggleState('dark-theme-toggle'),
+                    animations: getToggleState('animations-toggle'),
+                    language: getSelectValue('language-select'),
+                    notifications: getToggleState('notifications-toggle')
+                },
+                security: {
+                    detailedLogs: getToggleState('logs-toggle'),
+                    maskImei: getToggleState('mask-imei-toggle'),
+                    sessionDuration: parseInt(getInputValue('session-duration'))
+                }
+            };
+        }
+
+        function setToggleState(id, active) {
+            const element = document.getElementById(id);
+            if (element) {
+                if (active) {
+                    element.classList.add('active');
+                } else {
+                    element.classList.remove('active');
+                }
+            }
+        }
+
+        function getToggleState(id) {
+            const element = document.getElementById(id);
+            return element ? element.classList.contains('active') : false;
+        }
+
+        function setInputValue(id, value) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.value = value;
+            }
+        }
+
+        function getInputValue(id) {
+            const element = document.getElementById(id);
+            return element ? element.value : '';
+        }
+
+        function setSelectValue(id, value) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.value = value;
+            }
+        }
+
+        function getSelectValue(id) {
+            const element = document.getElementById(id);
+            return element ? element.value : '';
+        }
+
+        function showAlert(message, type) {
+            const alert = document.getElementById('saveAlert');
+            alert.className = `alert ${type}`;
+            alert.innerHTML = type === 'success' ? `✅ ${message}` : `❌ ${message}`;
+            alert.style.display = 'block';
+            
+            setTimeout(() => {
+                alert.style.display = 'none';
+            }, 3000);
+        }
+        
+        // Sauvegarder automatiquement lors des changements
+        document.addEventListener('change', function(e) {
+            if (e.target.classList.contains('input-field') || e.target.classList.contains('select-field')) {
+                clearTimeout(window.autoSaveTimer);
+                window.autoSaveTimer = setTimeout(() => {
+                    console.log('Auto-sauvegarde des paramètres');
+                    saveSettings();
+                }, 2000);
+            }
+        });
+
+        // Ajouter des IDs aux éléments pour faciliter la manipulation
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggles = document.querySelectorAll('.toggle-switch');
+            const inputs = document.querySelectorAll('.input-field');
+            const selects = document.querySelectorAll('.select-field');
+            
+            // Assigner des IDs aux toggles
+            if (toggles[0]) toggles[0].id = 'dhru-toggle';
+            if (toggles[1]) toggles[1].id = 'ifree-toggle';
+            if (toggles[2]) toggles[2].id = 'luhn-toggle';
+            if (toggles[3]) toggles[3].id = 'fake-detection-toggle';
+            if (toggles[4]) toggles[4].id = 'gsma-toggle';
+            if (toggles[5]) toggles[5].id = 'dark-theme-toggle';
+            if (toggles[6]) toggles[6].id = 'animations-toggle';
+            if (toggles[7]) toggles[7].id = 'notifications-toggle';
+            if (toggles[8]) toggles[8].id = 'logs-toggle';
+            if (toggles[9]) toggles[9].id = 'mask-imei-toggle';
+            
+            // Assigner des IDs aux inputs
+            if (inputs[0]) inputs[0].id = 'dhru-api-key';
+            if (inputs[1]) inputs[1].id = 'api-timeout';
+            if (inputs[2]) inputs[2].id = 'session-duration';
+            
+            // Assigner des IDs aux selects
+            if (selects[0]) selects[0].id = 'validation-mode';
+            if (selects[1]) selects[1].id = 'language-select';
+        });
+    </script>
+</body>
+</html>

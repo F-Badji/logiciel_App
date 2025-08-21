@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.logicielapp.controller.iCloudUnlockController">
+   <top>
+      <VBox styleClass="header-section">
+         <HBox alignment="CENTER_LEFT" spacing="15.0">
+            <Label styleClass="window-title" text="🍎 Déblocage Comptes iCloud Bloqués">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+         </HBox>
+         <Separator />
+         <padding>
+            <Insets bottom="10.0" left="20.0" right="20.0" top="15.0" />
+         </padding>
+      </VBox>
+   </top>
+   
+   <center>
+      <VBox spacing="20.0">
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+         
+         <!-- Section Détection d'Appareils -->
+         <VBox spacing="10.0" styleClass="section-box">
+            <Label styleClass="section-title" text="📱 Détection d'Appareils iOS">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            
+            <HBox alignment="CENTER_LEFT" spacing="15.0">
+               <Button fx:id="btnDetectDevices" onAction="#handleDetectDevices" styleClass="primary-button" text="🔍 Détecter Appareils" />
+               <Button fx:id="btnRefreshDevices" onAction="#handleRefreshDevices" styleClass="secondary-button" text="🔄 Actualiser" />
+               <Separator orientation="VERTICAL" />
+               <Label fx:id="lblDeviceStatus" styleClass="status-label" text="Aucun appareil détecté" />
+            </HBox>
+            
+            <TableView fx:id="tableDevices" prefHeight="120.0">
+               <columns>
+                  <TableColumn fx:id="colDeviceModel" prefWidth="150.0" text="Modèle" />
+                  <TableColumn fx:id="colDeviceIMEI" prefWidth="180.0" text="IMEI/Série" />
+                  <TableColumn fx:id="colDeviceState" prefWidth="120.0" text="État" />
+                  <TableColumn fx:id="colDeviceOS" prefWidth="100.0" text="iOS Version" />
+                  <TableColumn fx:id="colDeviceAction" prefWidth="100.0" text="Action" />
+               </columns>
+            </TableView>
+         </VBox>
+         
+         <!-- Section Type de Déblocage -->
+         <VBox spacing="10.0" styleClass="section-box">
+            <Label styleClass="section-title" text="🔓 Type de Déblocage iCloud">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            
+            <VBox spacing="8.0">
+               <RadioButton fx:id="rbActivationLock" selected="true" text="🔒 Activation Lock (Logo Apple bloqué)">
+                  <toggleGroup>
+                     <ToggleGroup fx:id="unlockTypeGroup" />
+                  </toggleGroup>
+               </RadioButton>
+               <RadioButton fx:id="rbAccountLocked" text="👤 Compte iCloud Verrouillé (Mot de passe oublié)" toggleGroup="$unlockTypeGroup" />
+               <RadioButton fx:id="rbFindMyDevice" text="📍 Find My Device Activé (Localisation forcée)" toggleGroup="$unlockTypeGroup" />
+               <RadioButton fx:id="rbScreenTime" text="⏰ Screen Time Bloqué (Contrôle parental)" toggleGroup="$unlockTypeGroup" />
+               <RadioButton fx:id="rbTwoFactorAuth" text="🔐 Authentification à 2 Facteurs Bloquée" toggleGroup="$unlockTypeGroup" />
+               <RadioButton fx:id="rbCompleteBypass" text="🚀 Bypass Complet (Toutes restrictions)" toggleGroup="$unlockTypeGroup" />
+            </VBox>
+         </VBox>
+         
+         <!-- Section Méthode de Déblocage -->
+         <VBox spacing="10.0" styleClass="section-box">
+            <Label styleClass="section-title" text="⚙️ Méthode de Déblocage">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            
+            <HBox spacing="15.0">
+               <VBox spacing="8.0" HBox.hgrow="ALWAYS">
+                  <RadioButton fx:id="rbMethod3uTools" selected="true" text="🛠️ Style 3uTools (Recommandé)">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="methodGroup" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="rbMethodCheckra1n" text="⚡ Checkra1n Exploit" toggleGroup="$methodGroup" />
+                  <RadioButton fx:id="rbMethodUncOver" text="🔓 Unc0ver Jailbreak" toggleGroup="$methodGroup" />
+               </VBox>
+               
+               <VBox spacing="8.0" HBox.hgrow="ALWAYS">
+                  <RadioButton fx:id="rbMethodTaiG" text="🎯 TaiG Bypass" toggleGroup="$methodGroup" />
+                  <RadioButton fx:id="rbMethodPangu" text="🐉 Pangu Team Method" toggleGroup="$methodGroup" />
+                  <RadioButton fx:id="rbMethodCustom" text="🔧 Méthode Personnalisée" toggleGroup="$methodGroup" />
+               </VBox>
+            </HBox>
+         </VBox>
+         
+         <!-- Section Options Avancées -->
+         <VBox spacing="10.0" styleClass="section-box">
+            <Label styleClass="section-title" text="🔬 Options Avancées">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            
+            <HBox spacing="20.0">
+               <VBox spacing="8.0" HBox.hgrow="ALWAYS">
+                  <CheckBox fx:id="cbBackupData" text="💾 Sauvegarder les données avant déblocage" />
+                  <CheckBox fx:id="cbPreserveFirmware" text="📱 Préserver le firmware actuel" />
+                  <CheckBox fx:id="cbSkipValidation" text="⚠️ Ignorer les validations de sécurité" />
+               </VBox>
+               
+               <VBox spacing="8.0" HBox.hgrow="ALWAYS">
+                  <CheckBox fx:id="cbVerboseLogging" selected="true" text="📝 Logs détaillés" />
+                  <CheckBox fx:id="cbAutoReboot" selected="true" text="🔄 Redémarrage automatique" />
+                  <CheckBox fx:id="cbTestMode" text="🧪 Mode Test (Simulation)" />
+               </VBox>
+            </HBox>
+         </VBox>
+         
+         <!-- Section Contrôles -->
+         <VBox spacing="15.0" styleClass="section-box">
+            <Label styleClass="section-title" text="🎮 Contrôles de Déblocage">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            
+            <HBox alignment="CENTER_LEFT" spacing="15.0">
+               <Button fx:id="btnStartUnlock" onAction="#handleStartUnlock" styleClass="success-button" text="🚀 Démarrer Déblocage" />
+               <Button fx:id="btnStopUnlock" disable="true" onAction="#handleStopUnlock" styleClass="danger-button" text="⏹️ Arrêter" />
+               <Button fx:id="btnResetDevice" onAction="#handleResetDevice" styleClass="warning-button" text="🔄 Reset Appareil" />
+               <Separator orientation="VERTICAL" />
+               <Button fx:id="btnSaveProfile" onAction="#handleSaveProfile" styleClass="secondary-button" text="💾 Sauvegarder Profil" />
+               <Button fx:id="btnLoadProfile" onAction="#handleLoadProfile" styleClass="secondary-button" text="📂 Charger Profil" />
+            </HBox>
+            
+            <!-- Barre de Progression -->
+            <VBox spacing="5.0">
+               <HBox alignment="CENTER_LEFT" spacing="10.0">
+                  <Label text="Progression:" />
+                  <Label fx:id="lblProgress" styleClass="progress-label" text="0%" />
+               </HBox>
+               <ProgressBar fx:id="progressBar" prefWidth="Infinity" progress="0.0" />
+               <Label fx:id="lblCurrentStep" styleClass="step-label" text="En attente..." />
+            </VBox>
+         </VBox>
+      </VBox>
+   </center>
+   
+   <bottom>
+      <VBox spacing="10.0" styleClass="footer-section">
+         <Separator />
+         
+         <!-- Console de Logs -->
+         <VBox spacing="5.0">
+            <HBox alignment="CENTER_LEFT" spacing="10.0">
+               <Label styleClass="section-title" text="📋 Console de Déblocage">
+                  <font>
+                     <Font name="System Bold" size="12.0" />
+                  </font>
+               </Label>
+               <Button fx:id="btnClearLogs" onAction="#handleClearLogs" styleClass="small-button" text="🗑️ Effacer" />
+               <Button fx:id="btnExportLogs" onAction="#handleExportLogs" styleClass="small-button" text="💾 Exporter" />
+            </HBox>
+            
+            <TextArea fx:id="txtConsole" editable="false" prefHeight="150.0" promptText="Les logs du processus de déblocage apparaîtront ici..." styleClass="console-area" wrapText="true" />
+         </VBox>
+         
+         <!-- Boutons de Navigation -->
+         <HBox alignment="CENTER_RIGHT" spacing="10.0">
+            <Button fx:id="btnHelp" onAction="#handleHelp" styleClass="secondary-button" text="❓ Aide" />
+            <Button fx:id="btnClose" onAction="#handleClose" styleClass="secondary-button" text="❌ Fermer" />
+         </HBox>
+         
+         <padding>
+            <Insets bottom="15.0" left="20.0" right="20.0" top="10.0" />
+         </padding>
+      </VBox>
+   </bottom>
+</BorderPane>

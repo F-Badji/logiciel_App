@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.logicielapp.controller.JailbreakerController" styleClass="dark-background">
+   <top>
+      <VBox styleClass="header-section">
+         <HBox alignment="CENTER" styleClass="title-bar">
+            <Label styleClass="window-title" text="🔓 Jailbreaker iOS - Exploitation des Failles de Sécurité">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+         </HBox>
+         
+         <HBox alignment="CENTER" spacing="20.0" styleClass="info-bar">
+            <Label text="Contournement avancé des protections iOS 7.0 à 18.6.1" 
+                   styleClass="info-text" />
+         </HBox>
+      </VBox>
+   </top>
+   
+   <center>
+      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED">
+         <content>
+                         <VBox spacing="20.0" styleClass="main-content">
+                <padding>
+                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                </padding>
+            
+            <!-- Section Détection des Appareils -->
+            <VBox styleClass="section-box-dark" spacing="10.0">
+               <Label styleClass="section-title-dark" text="📱 Détection et Analyse des Appareils">
+                  <font>
+                     <Font name="System Bold" size="14.0" />
+                  </font>
+               </Label>
+               <HBox spacing="10.0" alignment="CENTER_LEFT">
+                  <Button fx:id="detectBtn" onAction="#handleDetectDevices" styleClass="action-button-dark" text="🔍 Détecter Appareils" />
+                  <Button fx:id="refreshBtn" onAction="#handleRefreshDevices" styleClass="action-button-dark" text="🔄 Actualiser" />
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Label fx:id="deviceCountLabel" styleClass="info-label-dark" text="Aucun appareil détecté" />
+               </HBox>
+               
+               <TableView fx:id="deviceTable" prefHeight="150.0" styleClass="table-view-dark">
+                  <columns>
+                     <TableColumn fx:id="deviceNameCol" prefWidth="120.0" text="Appareil" />
+                     <TableColumn fx:id="deviceModelCol" prefWidth="100.0" text="Modèle" />
+                     <TableColumn fx:id="deviceIOSCol" prefWidth="80.0" text="iOS" />
+                     <TableColumn fx:id="deviceIMEICol" prefWidth="140.0" text="IMEI" />
+                     <TableColumn fx:id="deviceStatusCol" prefWidth="100.0" text="Statut" />
+                     <TableColumn fx:id="deviceJailbreakCol" prefWidth="120.0" text="Jailbreak" />
+                     <TableColumn fx:id="deviceVulnCol" prefWidth="140.0" text="Vulnérabilités" />
+                  </columns>
+               </TableView>
+            </VBox>
+            
+            <!-- Section Analyse des Vulnérabilités -->
+            <VBox styleClass="section-box-dark" spacing="10.0">
+               <Label styleClass="section-title-dark" text="🔍 Analyse des Vulnérabilités et Exploits">
+                  <font>
+                     <Font name="System Bold" size="14.0" />
+                  </font>
+               </Label>
+               <HBox spacing="15.0">
+                  <VBox spacing="8.0" HBox.hgrow="ALWAYS">
+                     <Label styleClass="subsection-title" text="Vulnérabilités Détectées:" />
+                     <ListView fx:id="vulnerabilityList" prefHeight="120.0" styleClass="text-area-dark" />
+                  </VBox>
+                  <VBox spacing="8.0" HBox.hgrow="ALWAYS">
+                     <Label styleClass="subsection-title" text="Exploits Disponibles:" />
+                     <ListView fx:id="exploitList" prefHeight="120.0" styleClass="text-area-dark" />
+                  </VBox>
+               </HBox>
+               <HBox spacing="10.0" alignment="CENTER_LEFT">
+                  <Button fx:id="analyzeBtn" onAction="#handleAnalyzeVulnerabilities" styleClass="action-button-dark" text="🔬 Analyser Vulnérabilités" />
+                  <Button fx:id="loadExploitsBtn" onAction="#handleLoadExploits" styleClass="action-button-dark" text="⚡ Charger Exploits" />
+                  <CheckBox fx:id="advancedModeCheck" text="Mode Avancé" styleClass="checkbox-dark" />
+               </HBox>
+            </VBox>
+            
+            <!-- Section Méthodes de Jailbreak -->
+            <VBox styleClass="section-box" spacing="10.0">
+               <Label styleClass="section-title" text="🛠️ Méthodes de Jailbreak">
+                  <font>
+                     <Font name="System Bold" size="14.0" />
+                  </font>
+               </Label>
+               <GridPane hgap="15.0" vgap="10.0">
+                  <columnConstraints>
+                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                  </columnConstraints>
+                  <rowConstraints>
+                     <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  </rowConstraints>
+                  
+                  <VBox spacing="5.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                     <RadioButton fx:id="untetheredRadio" text="🔓 Untethered Jailbreak" />
+                     <Label styleClass="method-description" text="Jailbreak permanent, survit aux redémarrages" />
+                  </VBox>
+                  
+                  <VBox spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                     <RadioButton fx:id="tetheredRadio" text="🔗 Tethered Jailbreak" />
+                     <Label styleClass="method-description" text="Nécessite une reconnexion après redémarrage" />
+                  </VBox>
+                  
+                  <VBox spacing="5.0" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                     <RadioButton fx:id="semiTetheredRadio" text="🔄 Semi-Tethered" />
+                     <Label styleClass="method-description" text="Redémarre normalement, jailbreak désactivé" />
+                  </VBox>
+                  
+                  <VBox spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <RadioButton fx:id="rootlessRadio" text="🌿 Rootless Jailbreak" />
+                     <Label styleClass="method-description" text="Jailbreak sans modification du système racine" />
+                  </VBox>
+               </GridPane>
+            </VBox>
+            
+            <!-- Section Configuration Avancée -->
+            <VBox styleClass="section-box" spacing="10.0">
+               <Label styleClass="section-title" text="⚙️ Configuration Avancée">
+                  <font>
+                     <Font name="System Bold" size="14.0" />
+                  </font>
+               </Label>
+               <GridPane hgap="15.0" vgap="10.0">
+                  <columnConstraints>
+                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                  </columnConstraints>
+                  
+                  <VBox spacing="5.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                     <CheckBox fx:id="bypassCodeSignCheck" text="Contourner la signature de code" />
+                     <CheckBox fx:id="disableOTACheck" text="Désactiver les mises à jour OTA" />
+                     <CheckBox fx:id="enableSSHCheck" text="Activer SSH" />
+                     <CheckBox fx:id="installCydiaCheck" text="Installer Cydia" />
+                  </VBox>
+                  
+                  <VBox spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                     <CheckBox fx:id="enableAFCCheck" text="Activer AFC2" />
+                     <CheckBox fx:id="patchKernelCheck" text="Patcher le noyau" />
+                     <CheckBox fx:id="enableDebugCheck" text="Mode Debug" />
+                     <CheckBox fx:id="backupSHSHCheck" text="Sauvegarder SHSH" />
+                  </VBox>
+               </GridPane>
+            </VBox>
+            
+            <!-- Section Progression et Contrôles -->
+            <VBox styleClass="section-box-dark" spacing="10.0">
+               <Label styleClass="section-title-dark" text="🚀 Exécution du Jailbreak">
+                  <font>
+                     <Font name="System Bold" size="14.0" />
+                  </font>
+               </Label>
+               <HBox spacing="10.0" alignment="CENTER_LEFT">
+                  <Button fx:id="rebootBtn" onAction="#handleRebootDevice" styleClass="action-button-dark" text="🔄 Redémarrer Appareil" />
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Label fx:id="statusLabel" styleClass="status-label-dark" text="Prêt" />
+               </HBox>
+               
+               <VBox spacing="5.0">
+                  <HBox alignment="CENTER_LEFT" spacing="10.0">
+                     <Label text="Progression:" styleClass="info-label-dark" />
+                     <Label fx:id="progressLabel" text="En attente..." styleClass="info-text-dark" />
+                  </HBox>
+                  <ProgressBar fx:id="progressBar" prefWidth="Infinity" progress="0.0" />
+               </VBox>
+            </VBox>
+            
+            <!-- Section Logs -->
+            <VBox styleClass="section-box-dark" spacing="10.0">
+               <HBox alignment="CENTER_LEFT" spacing="10.0">
+                  <Label styleClass="section-title-dark" text="📋 Logs d'Exécution">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Button fx:id="clearLogsBtn" onAction="#handleClearLogs" styleClass="action-button-dark" text="🗑️ Effacer" />
+                  <Button fx:id="saveLogsBtn" onAction="#handleSaveLogs" styleClass="action-button-dark" text="💾 Sauvegarder" />
+               </HBox>
+               <TextArea fx:id="logArea" editable="false" prefHeight="200.0" wrapText="true" styleClass="text-area-dark" />
+            </VBox>
+            
+               </VBox>
+            </content>
+         </ScrollPane>
+      </center>
+      
+             <!-- Boutons d'action et footer -->
+       <bottom>
+          <VBox styleClass="footer-section">
+             <!-- Boutons d'action -->
+             <HBox spacing="15.0" alignment="CENTER" styleClass="button-bar">
+                <padding>
+                   <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
+                </padding>
+                
+                <Button fx:id="startJailbreakBtn" text="🔓 Démarrer Jailbreak" 
+                        onAction="#handleStartJailbreak" styleClass="start-button" 
+                        disable="true" prefWidth="200.0" />
+                
+                <Button fx:id="stopBtn" text="⏹️ Arrêter" onAction="#handleStopJailbreak" 
+                        styleClass="stop-button" disable="true" prefWidth="120.0" />
+                
+                <Button fx:id="helpBtn" text="❓ Aide" onAction="#handleHelp" 
+                        styleClass="help-button" prefWidth="100.0" />
+                
+                <Button fx:id="closeBtn" text="❌ Fermer" onAction="#handleClose" 
+                        styleClass="close-button" prefWidth="100.0" />
+             </HBox>
+             
+             <!-- Footer professionnel -->
+             <VBox alignment="CENTER" spacing="5.0" styleClass="copyright-footer">
+                <Label text="Logiciel developpe par : F.Badji" styleClass="footer-text" />
+                <Label text="Logiciel de Déblocage Mobile - © 2025" styleClass="footer-text" />
+                <padding>
+                   <Insets bottom="8.0" left="15.0" right="15.0" top="8.0" />
+                </padding>
+             </VBox>
+          </VBox>
+       </bottom>
+</BorderPane>

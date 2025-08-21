@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aide - Logiciel de Déblocage Mobile</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a252f 0%, #2c3e50 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1a252f 0%, #2c3e50 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .nav-btn {
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .nav-btn:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+        
+        .nav-btn.active {
+            background: rgba(255,255,255,0.4);
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .contact-hero {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 40px;
+            box-shadow: 0 15px 30px rgba(37, 211, 102, 0.3);
+        }
+        
+        .contact-hero h2 {
+            font-size: 2.2em;
+            margin-bottom: 15px;
+            font-weight: 300;
+        }
+        
+        .contact-hero p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .whatsapp-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: white;
+            color: #25D366;
+            padding: 20px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.3em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .whatsapp-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            color: #128C7E;
+        }
+        
+        .whatsapp-logo {
+            width: 40px;
+            height: 40px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5em;
+        }
+        
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .contact-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .contact-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            color: white;
+        }
+        
+        .contact-icon.whatsapp {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+        }
+        
+        .contact-icon.email {
+            background: linear-gradient(135deg, #EA4335 0%, #FBBC05 100%);
+        }
+        
+        .contact-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .contact-info {
+            font-size: 1.1em;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .contact-link {
+            display: inline-block;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #1a252f 0%, #2c3e50 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .contact-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(26, 37, 47, 0.5);
+            border-color: #3a5169;
+            background: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%);
+        }
+        
+        .faq-section {
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .faq-title {
+            font-size: 2em;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        
+        .faq-item {
+            background: white;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .faq-question {
+            padding: 20px;
+            background: linear-gradient(135deg, #1a252f 0%, #2c3e50 100%);
+            color: white;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 4px solid #3a5169;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%);
+            padding-left: 25px;
+        }
+        
+        .faq-answer {
+            padding: 20px;
+            display: none;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .faq-answer.active {
+            display: block;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+        
+        .feature-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .feature-description {
+            color: #666;
+            font-size: 0.95em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>❓ Aide & Support</h1>
+            <p>Obtenez de l'aide et contactez notre équipe</p>
+            
+            <div class="nav-buttons">
+                <a href="index.html" class="nav-btn">🏠 Accueil</a>
+                <a href="statistiques.html" class="nav-btn">📊 Statistiques</a>
+                <a href="parametres.html" class="nav-btn">⚙️ Paramètres</a>
+                <a href="aide.html" class="nav-btn active">❓ Aide</a>
+            </div>
+        </div>
+        
+        <div class="content">
+            <!-- Contact Hero Section -->
+            <div class="contact-hero">
+                <h2>💬 Contactez-nous directement</h2>
+                <p>Notre équipe est disponible pour vous aider avec vos questions</p>
+                <a href="https://wa.me/221769719383" class="whatsapp-button" target="_blank">
+                    <div class="whatsapp-logo">📱</div>
+                    <span>Contacter via WhatsApp</span>
+                </a>
+            </div>
+            
+            <!-- Contact Methods -->
+            <div class="contact-methods">
+                <div class="contact-card">
+                    <div class="contact-icon whatsapp">📱</div>
+                    <h3>WhatsApp</h3>
+                    <div class="contact-info">
+                        <strong>Numéro:</strong> 76-971-93-83<br>
+                        <small>Disponible 24h/24, 7j/7</small>
+                    </div>
+                    <a href="https://wa.me/221769719383" class="contact-link" target="_blank">
+                        Ouvrir WhatsApp
+                    </a>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon email">✉️</div>
+                    <h3>Email</h3>
+                    <div class="contact-info">
+                        <strong>Adresse:</strong> digitex.officiel@gmail.com<br>
+                        <small>Réponse sous 24h</small>
+                    </div>
+                    <a href="mailto:digitex.officiel@gmail.com" class="contact-link">
+                        Envoyer un Email
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Features -->
+            <div class="faq-section">
+                <h3 class="faq-title">🚀 Fonctionnalités Principales</h3>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🔍</div>
+                        <div class="feature-title">Vérification IMEI</div>
+                        <div class="feature-description">Vérification complète avec base TAC GSMA étendue</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🛡️</div>
+                        <div class="feature-title">Détection Fake</div>
+                        <div class="feature-description">Détection automatique des IMEI invalides</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <div class="feature-title">Statistiques</div>
+                        <div class="feature-description">Tableau de bord complet avec métriques</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⚙️</div>
+                        <div class="feature-title">Configuration</div>
+                        <div class="feature-description">Paramètres avancés et personnalisation</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FAQ -->
+            <div class="faq-section">
+                <h3 class="faq-title">❓ Questions Fréquentes</h3>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        Comment vérifier un IMEI ?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Entrez simplement votre numéro IMEI de 15 chiffres dans le champ prévu à cet effet sur la page d'accueil et cliquez sur "Vérifier IMEI". Notre système utilisera plusieurs APIs pour récupérer les informations complètes de votre appareil.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        Que faire si mon IMEI est détecté comme fake ?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Si votre IMEI est détecté comme fake, cela signifie qu'il ne respecte pas les standards GSMA ou qu'il contient des patterns invalides (tous les chiffres identiques, séquences, etc.). Vérifiez que vous avez saisi le bon IMEI depuis les paramètres de votre téléphone.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        Quelles informations puis-je obtenir ?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Notre système peut récupérer : la marque et le modèle, la couleur et la capacité de stockage, le statut de verrouillage opérateur, le statut de liste noire, les informations de garantie, le statut d'activation, et pour les appareils Apple, le statut iCloud.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        Les données sont-elles sécurisées ?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Oui, nous prenons la sécurité très au sérieux. Les IMEI sont partiellement masqués dans les logs, toutes les communications sont chiffrées, et nous ne stockons aucune donnée personnelle de manière permanente.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        Comment contacter le support ?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Vous pouvez nous contacter directement via WhatsApp au 76-971-93-83 ou par email à digitex.officiel@gmail.com. Notre équipe est disponible pour répondre à toutes vos questions et vous aider avec le déblocage de vos appareils.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const icon = element.querySelector('span');
+            
+            if (answer.classList.contains('active')) {
+                answer.classList.remove('active');
+                icon.textContent = '+';
+            } else {
+                // Fermer toutes les autres FAQ
+                document.querySelectorAll('.faq-answer.active').forEach(item => {
+                    item.classList.remove('active');
+                });
+                document.querySelectorAll('.faq-question span').forEach(span => {
+                    span.textContent = '+';
+                });
+                
+                // Ouvrir la FAQ cliquée
+                answer.classList.add('active');
+                icon.textContent = '−';
+            }
+        }
+        
+        // Animation d'apparition des cartes
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.contact-card, .feature-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'all 0.6s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 200);
+            });
+        });
+    </script>
+</body>
+</html>

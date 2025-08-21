@@ -1,0 +1,559 @@
+/* ============================================
+   🌟 ANIMATIONS EXTRAORDINAIRES - INTERFACE MASTERPIECE 🌟
+   Version CLARIFIÉE pour une meilleure lisibilité
+   ============================================ */
+
+/* ============================================
+   ✨ ANIMATION D'ENTRÉE HOLOGRAPHIQUE CLARIFIÉE
+   ============================================ */
+@keyframes fadeInHolo {
+    0% {
+        -fx-opacity: 0;
+        -fx-scale-x: 0.8;
+        -fx-scale-y: 0.8;
+        -fx-translate-y: 30;
+        -fx-rotate: -5deg;
+    }
+    50% {
+        -fx-opacity: 0.7;
+        -fx-scale-x: 1.05;
+        -fx-scale-y: 1.05;
+        -fx-translate-y: -5;
+        -fx-rotate: 2deg;
+    }
+    100% {
+        -fx-opacity: 1;
+        -fx-scale-x: 1;
+        -fx-scale-y: 1;
+        -fx-translate-y: 0;
+        -fx-rotate: 0deg;
+    }
+}
+
+.fade-in-holo {
+    -fx-animation: fadeInHolo 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ============================================
+   ⚡ PULSATION ÉNERGÉTIQUE CLARIFIÉE
+   ============================================ */
+@keyframes pulseEnergy {
+    0% {
+        -fx-scale-x: 1;
+        -fx-scale-y: 1;
+        -fx-effect: dropshadow(gaussian, rgba(138, 43, 226, 0.3), 8, 0.4, 0, 0);
+    }
+    50% {
+        -fx-scale-x: 1.03;
+        -fx-scale-y: 1.03;
+        -fx-effect: dropshadow(gaussian, rgba(138, 43, 226, 0.5), 12, 0.6, 0, 0);
+    }
+    100% {
+        -fx-scale-x: 1;
+        -fx-scale-y: 1;
+        -fx-effect: dropshadow(gaussian, rgba(138, 43, 226, 0.3), 8, 0.4, 0, 0);
+    }
+}
+
+.pulse-energy {
+    -fx-animation: pulseEnergy 2s ease-in-out infinite;
+}
+
+/* ============================================
+   🌈 CHANGEMENT DE COULEUR HOLOGRAPHIQUE CLARIFIÉ
+   ============================================ */
+@keyframes holographicColorShift {
+    0% {
+        -fx-text-fill: #8a2be2;
+        -fx-border-color: rgba(138, 43, 226, 0.4);
+    }
+    25% {
+        -fx-text-fill: #4b0082;
+        -fx-border-color: rgba(75, 0, 130, 0.5);
+    }
+    50% {
+        -fx-text-fill: #483d8b;
+        -fx-border-color: rgba(72, 61, 139, 0.6);
+    }
+    75% {
+        -fx-text-fill: #6a5acd;
+        -fx-border-color: rgba(106, 90, 205, 0.5);
+    }
+    100% {
+        -fx-text-fill: #8a2be2;
+        -fx-border-color: rgba(138, 43, 226, 0.4);
+    }
+}
+
+.holographic-color-shift {
+    -fx-animation: holographicColorShift 4s ease-in-out infinite;
+}
+
+/* ============================================
+   🌪️ ROTATION VORTEX CLARIFIÉE
+   ============================================ */
+@keyframes rotateVortex {
+    0% {
+        -fx-rotate: 0deg;
+        -fx-scale-x: 1;
+        -fx-scale-y: 1;
+    }
+    50% {
+        -fx-rotate: 180deg;
+        -fx-scale-x: 1.1;
+        -fx-scale-y: 1.1;
+    }
+    100% {
+        -fx-rotate: 360deg;
+        -fx-scale-x: 1;
+        -fx-scale-y: 1;
+    }
+}
+
+.rotate-vortex {
+    -fx-animation: rotateVortex 3s linear infinite;
+}
+
+/* ============================================
+   🎯 REBOND ÉLASTIQUE CLARIFIÉ
+   ============================================ */
+@keyframes bounceElastic {
+    0% {
+        -fx-translate-y: 0;
+        -fx-scale-x: 1;
+        -fx-scale-y: 1;
+    }
+    25% {
+        -fx-translate-y: -15;
+        -fx-scale-x: 1.05;
+        -fx-scale-y: 0.95;
+    }
+    50% {
+        -fx-translate-y: 0;
+        -fx-scale-x: 1;
+        -fx-scale-y: 1;
+    }
+    75% {
+        -fx-translate-y: -8;
+        -fx-scale-x: 1.02;
+        -fx-scale-y: 0.98;
+    }
+    100% {
+        -fx-translate-y: 0;
+        -fx-scale-x: 1;
+        -fx-scale-y: 1;
+    }
+}
+
+.bounce-elastic {
+    -fx-animation: bounceElastic 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* ============================================
+   💫 EFFET NÉON CLARIFIÉ
+   ============================================ */
+@keyframes glowNeon {
+    0% {
+        -fx-effect: dropshadow(gaussian, rgba(138, 43, 226, 0.4), 10, 0.5, 0, 0);
+    }
+    50% {
+        -fx-effect: dropshadow(gaussian, rgba(138, 43, 226, 0.7), 15, 0.7, 0, 0),
+                    dropshadow(gaussian, rgba(255, 255, 255, 0.8), 5, 0.3, 0, 0);
+    }
+    100% {
+        -fx-effect: dropshadow(gaussian, rgba(138, 43, 226, 0.4), 10, 0.5, 0, 0);
+    }
+}
+
+.glow-neon {
+    -fx-animation: glowNeon 2s ease-in-out infinite;
+}
+
+/* ============================================
+   🚀 GLISSEMENT GAUCHE CLARIFIÉ
+   ============================================ */
+@keyframes slideInLeft {
+    0% {
+        -fx-translate-x: -100;
+        -fx-opacity: 0;
+        -fx-rotate: -10deg;
+    }
+    100% {
+        -fx-translate-x: 0;
+        -fx-opacity: 1;
+        -fx-rotate: 0deg;
+    }
+}
+
+.slide-in-left {
+    -fx-animation: slideInLeft 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ============================================
+   🎭 GLISSEMENT DROITE CLARIFIÉ
+   ============================================ */
+@keyframes slideInRight {
+    0% {
+        -fx-translate-x: 100;
+        -fx-opacity: 0;
+        -fx-rotate: 10deg;
+    }
+    100% {
+        -fx-translate-x: 0;
+        -fx-opacity: 1;
+        -fx-rotate: 0deg;
+    }
+}
+
+.slide-in-right {
+    -fx-animation: slideInRight 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ============================================
+   🔍 ZOOM HOLOGRAPHIQUE CLARIFIÉ
+   ============================================ */
+@keyframes zoomInHolo {
+    0% {
+        -fx-scale-x: 0.5;
+        -fx-scale-y: 0.5;
+        -fx-opacity: 0;
+        -fx-rotate: -15deg;
+    }
+    50% {
+        -fx-scale-x: 1.1;
+        -fx-scale-y: 1.1;
+        -fx-opacity: 0.8;
+        -fx-rotate: 5deg;
+    }
+    100% {
+        -fx-scale-x: 1;
+        -fx-scale-y: 1;
+        -fx-opacity: 1;
+        -fx-rotate: 0deg;
+    }
+}
+
+.zoom-in-holo {
+    -fx-animation: zoomInHolo 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ============================================
+   🎪 FLIP 3D CLARIFIÉ
+   ============================================ */
+@keyframes flip3D {
+    0% {
+        -fx-rotate-y: 0deg;
+        -fx-scale-x: 1;
+    }
+    50% {
+        -fx-rotate-y: 180deg;
+        -fx-scale-x: 0.8;
+    }
+    100% {
+        -fx-rotate-y: 360deg;
+        -fx-scale-x: 1;
+    }
+}
+
+.flip-3d {
+    -fx-animation: flip3D 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ============================================
+   📳 TREMBLEMENT VIBRATION CLARIFIÉ
+   ============================================ */
+@keyframes shakeVibrate {
+    0%, 100% {
+        -fx-translate-x: 0;
+        -fx-rotate: 0deg;
+    }
+    10%, 30%, 50%, 70%, 90% {
+        -fx-translate-x: -5;
+        -fx-rotate: -1deg;
+    }
+    20%, 40%, 60%, 80% {
+        -fx-translate-x: 5;
+        -fx-rotate: 1deg;
+    }
+}
+
+.shake-vibrate {
+    -fx-animation: shakeVibrate 0.6s ease-in-out;
+}
+
+/* ============================================
+   🌈 BORDURE ARC-EN-CIEL CLARIFIÉE
+   ============================================ */
+@keyframes rainbowBorder {
+    0% {
+        -fx-border-color: rgba(138, 43, 226, 0.6);
+    }
+    16.66% {
+        -fx-border-color: rgba(75, 0, 130, 0.7);
+    }
+    33.33% {
+        -fx-border-color: rgba(72, 61, 139, 0.8);
+    }
+    50% {
+        -fx-border-color: rgba(106, 90, 205, 0.7);
+    }
+    66.66% {
+        -fx-border-color: rgba(147, 112, 219, 0.6);
+    }
+    83.33% {
+        -fx-border-color: rgba(138, 43, 226, 0.7);
+    }
+    100% {
+        -fx-border-color: rgba(138, 43, 226, 0.6);
+    }
+}
+
+.rainbow-border {
+    -fx-animation: rainbowBorder 3s linear infinite;
+}
+
+/* ============================================
+   ⏳ SPINNER DE CHARGEMENT CLARIFIÉ
+   ============================================ */
+@keyframes loadingSpinner {
+    0% {
+        -fx-rotate: 0deg;
+        -fx-scale-x: 1;
+        -fx-scale-y: 1;
+    }
+    50% {
+        -fx-rotate: 180deg;
+        -fx-scale-x: 1.1;
+        -fx-scale-y: 1.1;
+    }
+    100% {
+        -fx-rotate: 360deg;
+        -fx-scale-x: 1;
+        -fx-scale-y: 1;
+    }
+}
+
+.loading-spinner {
+    -fx-animation: loadingSpinner 1.5s linear infinite;
+}
+
+/* ============================================
+   🎉 CÉLÉBRATION DE SUCCÈS CLARIFIÉE
+   ============================================ */
+@keyframes successCelebration {
+    0% {
+        -fx-scale-x: 1;
+        -fx-scale-y: 1;
+        -fx-effect: dropshadow(gaussian, rgba(40, 167, 69, 0.3), 8, 0.4, 0, 0);
+    }
+    25% {
+        -fx-scale-x: 1.2;
+        -fx-scale-y: 1.2;
+        -fx-effect: dropshadow(gaussian, rgba(40, 167, 69, 0.6), 15, 0.7, 0, 0);
+    }
+    50% {
+        -fx-scale-x: 1.1;
+        -fx-scale-y: 1.1;
+        -fx-effect: dropshadow(gaussian, rgba(40, 167, 69, 0.5), 12, 0.6, 0, 0);
+    }
+    75% {
+        -fx-scale-x: 1.15;
+        -fx-scale-y: 1.15;
+        -fx-effect: dropshadow(gaussian, rgba(40, 167, 69, 0.7), 18, 0.8, 0, 0);
+    }
+    100% {
+        -fx-scale-x: 1;
+        -fx-scale-y: 1;
+        -fx-effect: dropshadow(gaussian, rgba(40, 167, 69, 0.3), 8, 0.4, 0, 0);
+    }
+}
+
+.success-celebration {
+    -fx-animation: successCelebration 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ============================================
+   ⚠️ TREMBLEMENT D'ERREUR CLARIFIÉ
+   ============================================ */
+@keyframes errorShake {
+    0%, 100% {
+        -fx-translate-x: 0;
+        -fx-effect: dropshadow(gaussian, rgba(220, 53, 69, 0.3), 8, 0.4, 0, 0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        -fx-translate-x: -8;
+        -fx-effect: dropshadow(gaussian, rgba(220, 53, 69, 0.5), 12, 0.6, 0, 0);
+    }
+    20%, 40%, 60%, 80% {
+        -fx-translate-x: 8;
+        -fx-effect: dropshadow(gaussian, rgba(220, 53, 69, 0.5), 12, 0.6, 0, 0);
+    }
+}
+
+.error-shake {
+    -fx-animation: errorShake 0.8s ease-in-out;
+}
+
+/* ============================================
+   🎯 EFFETS DE SURVOL CLARIFIÉS
+   ============================================ */
+
+/* Soulever au survol */
+.hover-lift:hover {
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-translate-y: -5;
+    -fx-effect: dropshadow(gaussian, rgba(138, 43, 226, 0.4), 15, 0.6, 0, 3);
+    -fx-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Effet néon au survol */
+.hover-glow:hover {
+    -fx-effect: dropshadow(gaussian, rgba(138, 43, 226, 0.6), 20, 0.8, 0, 0),
+                dropshadow(gaussian, rgba(255, 255, 255, 0.8), 8, 0.4, 0, 0);
+    -fx-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ============================================
+   🎪 EFFETS DE CLIC CLARIFIÉS
+   ============================================ */
+
+/* Ondulation au clic */
+.click-ripple:clicked {
+    -fx-scale-x: 0.95;
+    -fx-scale-y: 0.95;
+    -fx-effect: dropshadow(gaussian, rgba(138, 43, 226, 0.8), 25, 0.9, 0, 0);
+    -fx-transition: all 0.1s ease-out;
+}
+
+/* ============================================
+   🌈 CHANGEMENT D'ARRIÈRE-PLAN CLARIFIÉ
+   ============================================ */
+@keyframes backgroundShift {
+    0% {
+        -fx-background-color: linear-gradient(135deg, 
+            rgba(240, 248, 255, 0.98) 0%, 
+            rgba(230, 240, 255, 0.95) 100%);
+    }
+    25% {
+        -fx-background-color: linear-gradient(135deg, 
+            rgba(245, 250, 255, 0.98) 0%, 
+            rgba(235, 245, 255, 0.95) 100%);
+    }
+    50% {
+        -fx-background-color: linear-gradient(135deg, 
+            rgba(250, 252, 255, 0.98) 0%, 
+            rgba(240, 250, 255, 0.95) 100%);
+    }
+    75% {
+        -fx-background-color: linear-gradient(135deg, 
+            rgba(245, 250, 255, 0.98) 0%, 
+            rgba(235, 245, 255, 0.95) 100%);
+    }
+    100% {
+        -fx-background-color: linear-gradient(135deg, 
+            rgba(240, 248, 255, 0.98) 0%, 
+            rgba(230, 240, 255, 0.95) 100%);
+    }
+}
+
+.background-shift {
+    -fx-animation: backgroundShift 10s ease-in-out infinite;
+}
+
+/* ============================================
+   🎪 ANIMATION MASTERPIECE COMBINÉE CLARIFIÉE
+   ============================================ */
+@keyframes masterpieceAnimation {
+    0% {
+        -fx-opacity: 0;
+        -fx-scale-x: 0.8;
+        -fx-scale-y: 0.8;
+        -fx-translate-y: 20;
+        -fx-rotate: -3deg;
+        -fx-effect: dropshadow(gaussian, rgba(138, 43, 226, 0.2), 5, 0.3, 0, 0);
+    }
+    25% {
+        -fx-opacity: 0.7;
+        -fx-scale-x: 1.05;
+        -fx-scale-y: 1.05;
+        -fx-translate-y: -3;
+        -fx-rotate: 2deg;
+        -fx-effect: dropshadow(gaussian, rgba(138, 43, 226, 0.4), 10, 0.5, 0, 0);
+    }
+    50% {
+        -fx-opacity: 0.9;
+        -fx-scale-x: 1.02;
+        -fx-scale-y: 1.02;
+        -fx-translate-y: 1;
+        -fx-rotate: -1deg;
+        -fx-effect: dropshadow(gaussian, rgba(138, 43, 226, 0.3), 8, 0.4, 0, 0);
+    }
+    75% {
+        -fx-opacity: 0.95;
+        -fx-scale-x: 1.01;
+        -fx-scale-y: 1.01;
+        -fx-translate-y: -1;
+        -fx-rotate: 1deg;
+        -fx-effect: dropshadow(gaussian, rgba(138, 43, 226, 0.5), 12, 0.6, 0, 0);
+    }
+    100% {
+        -fx-opacity: 1;
+        -fx-scale-x: 1;
+        -fx-scale-y: 1;
+        -fx-translate-y: 0;
+        -fx-rotate: 0deg;
+        -fx-effect: dropshadow(gaussian, rgba(138, 43, 226, 0.3), 8, 0.4, 0, 0);
+    }
+}
+
+.masterpiece-animation {
+    -fx-animation: masterpieceAnimation 2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ============================================
+   🎭 ANIMATIONS SPÉCIALES POUR ÉLÉMENTS CLARIFIÉS
+   ============================================ */
+
+/* Animation pour les boutons d'action */
+.action-button-animation {
+    -fx-animation: pulseEnergy 3s ease-in-out infinite;
+}
+
+/* Animation pour les cartes plateforme */
+.platform-card-animation {
+    -fx-animation: fadeInHolo 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Animation pour les titres */
+.title-animation {
+    -fx-animation: holographicColorShift 6s ease-in-out infinite;
+}
+
+/* Animation pour les éléments de navigation */
+.nav-animation {
+    -fx-animation: glowNeon 4s ease-in-out infinite;
+}
+
+/* ============================================
+   🌟 FINAL TOUCHES - PERFECTION CLARIFIÉE
+   ============================================ */
+
+/* Transition globale pour tous les éléments */
+* {
+    -fx-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Optimisation des performances */
+.performance-optimized {
+    -fx-cache: true;
+    -fx-cache-hint: speed;
+}
+
+/* ============================================
+   🏆 MASTERPIECE ANIMATIONS COMPLETE - CLARIFIÉ
+   ============================================ */
+
+/* Ces animations créent l'interface la plus extraordinaire et professionnelle au monde ! */
+/* Version clarifiée pour une lisibilité parfaite avec des effets visuels révolutionnaires ! */
+/* ��✨🚀🎨🎭🌈⚡🎪🏆 */

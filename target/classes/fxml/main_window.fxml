@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="com.logicielapp.controller.MainController" styleClass="dark-background">
+   
+   <!-- Barre de titre -->
+   <top>
+      <VBox styleClass="header-section">
+         <HBox alignment="CENTER" styleClass="title-bar">
+            <Label styleClass="app-title" text="Logiciel de Déblocage Mobile Multi-Plateforme">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+         </HBox>
+         
+         <!-- Barre de navigation -->
+         <HBox alignment="CENTER" styleClass="navigation-bar" spacing="15.0">
+            <MenuButton fx:id="menuListeDetournage" text="📋 Liste détournage" styleClass="nav-menu-button" prefWidth="180" prefHeight="35">
+               <items>
+                  <MenuItem fx:id="menuAccueil" text="🏠 Accueil" onAction="#handleAccueil" />
+                  <MenuItem fx:id="menuOperations" text="🔧 Opérations" onAction="#handleOperations" />
+                  <MenuItem fx:id="menuFlash" text="⚡ Flashage" onAction="#handleFlash" />
+                  <MenuItem fx:id="menuICloudBypass" text="🍎 iCloud Bypass" onAction="#handleICloudBypass" />
+                  <MenuItem fx:id="menuFaceIDRepair" text="🔒 Réparation Face ID" onAction="#handleFaceIDRepair" />
+                  <MenuItem fx:id="menuJailbreaker" text="🔓 Jailbreaker iOS" onAction="#handleJailbreaker" />
+                  <MenuItem fx:id="menuScreenTimeBypass" text="⏰ Temps d'Écran" onAction="#handleScreenTimeBypass" />
+                  <MenuItem fx:id="menuSimUnlock" text="📱 Déblocage SIM" onAction="#handleSimUnlock" />
+                  <MenuItem fx:id="menuPowerControl" text="⚡ Contrôle Alimentation" onAction="#handlePowerControl" />
+                  <SeparatorMenuItem />
+                  <MenuItem fx:id="menuStatistics" text="📊 Statistiques" onAction="#handleStatistics" />
+                  <MenuItem fx:id="menuParameters" text="⚙️ Paramètres" onAction="#handleParameters" />
+                  <MenuItem fx:id="menuHelp" text="❓ Aide" onAction="#handleHelp" />
+               </items>
+            </MenuButton>
+         </HBox>
+      </VBox>
+   </top>
+
+   <!-- Zone principale de contenu -->
+   <center>
+      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED">
+         <content>
+            <StackPane fx:id="contentArea">
+         
+         <!-- Page d'accueil -->
+         <VBox fx:id="accueilPane" alignment="CENTER" spacing="30.0" styleClass="main-content">
+            <VBox alignment="CENTER" spacing="20.0">
+               <Label styleClass="welcome-title" text="Bienvenue dans le Logiciel de Déblocage Mobile">
+                  <font>
+                     <Font name="System Bold" size="20.0" />
+                  </font>
+               </Label>
+               
+               <Label styleClass="subtitle" text="Choisissez votre plateforme et méthode de connexion" 
+                      textAlignment="CENTER" wrapText="true">
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+               </Label>
+            </VBox>
+
+            <!-- Sélection de plateforme -->
+            <HBox alignment="CENTER" spacing="30.0">
+               <VBox alignment="CENTER" spacing="15.0" styleClass="platform-card-dark">
+                  <Label styleClass="platform-title-dark" text="🍏 iOS / iPadOS">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <VBox spacing="10.0">
+                     <Button fx:id="btnIOSUSB" mnemonicParsing="false" onAction="#handleIOSUSB" 
+                             prefWidth="200.0" styleClass="action-button-dark" text="🔌 Connexion USB" />
+                     <Button fx:id="btnIOSIMEI" mnemonicParsing="false" onAction="#handleIOSIMEI" 
+                             prefWidth="200.0" styleClass="action-button-dark" text="📡 Déblocage IMEI" />
+                  </VBox>
+                  <Label styleClass="info-text-dark" text="Compatible iPhone 5 → iPhone 15+" 
+                         textAlignment="CENTER" wrapText="true" />
+               </VBox>
+
+               <VBox alignment="CENTER" spacing="15.0" styleClass="platform-card-dark">
+                  <Label styleClass="platform-title-dark" text="🤖 Android">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <VBox spacing="10.0">
+                     <Button fx:id="btnAndroidUSB" mnemonicParsing="false" onAction="#handleAndroidUSB" 
+                             prefWidth="200.0" styleClass="action-button-dark" text="🔌 Connexion USB" />
+                     <Button fx:id="btnAndroidIMEI" mnemonicParsing="false" onAction="#handleAndroidIMEI" 
+                             prefWidth="200.0" styleClass="action-button-dark" text="📡 Déblocage IMEI" />
+                  </VBox>
+                  <Label styleClass="info-text-dark" text="Samsung, Huawei, Xiaomi, Oppo, etc." 
+                         textAlignment="CENTER" wrapText="true" />
+               </VBox>
+            </HBox>
+
+            <!-- Détection automatique d'appareils -->
+            <VBox alignment="CENTER" spacing="15.0" styleClass="detection-section-dark">
+               <Label styleClass="section-title-dark" text="🔍 Détection Automatique">
+                  <font>
+                     <Font name="System Bold" size="16.0" />
+                  </font>
+               </Label>
+               <HBox alignment="CENTER" spacing="15.0">
+                  <Button fx:id="btnScanUSB" mnemonicParsing="false" onAction="#handleScanUSB" 
+                          styleClass="scan-button-dark" text="Analyser Appareils USB" />
+                  <Label fx:id="lblUSBStatus" styleClass="status-label-dark" text="Aucun appareil détecté" />
+               </HBox>
+               <ProgressBar fx:id="progressScan" prefWidth="300.0" progress="0.0" visible="false" />
+            </VBox>
+         </VBox>
+
+         <!-- Page des opérations (initialement cachée) -->
+         <VBox fx:id="operationsPane" spacing="20.0" styleClass="main-content" visible="false">
+            <Label styleClass="page-title" text="🔧 Opérations de Déblocage">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            
+            <!-- Informations appareil -->
+            <VBox spacing="15.0" styleClass="info-section-dark">
+               <Label styleClass="section-title-dark" text="📱 Informations Appareil">
+                  <font>
+                     <Font name="System Bold" size="14.0" />
+                  </font>
+               </Label>
+               <GridPane hgap="15.0" vgap="10.0" styleClass="info-grid-dark">
+                  <Label text="Modèle:" GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="info-label-dark" />
+                  <Label fx:id="lblDeviceModel" text="Non détecté" GridPane.columnIndex="1" GridPane.rowIndex="0" styleClass="info-value-dark" />
+                  <Label text="IMEI:" GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="info-label-dark" />
+                  <Label fx:id="lblDeviceIMEI" text="Non disponible" GridPane.columnIndex="1" GridPane.rowIndex="1" styleClass="info-value-dark" />
+                  <Label text="Plateforme:" GridPane.columnIndex="0" GridPane.rowIndex="2" styleClass="info-label-dark" />
+                  <Label fx:id="lblDevicePlatform" text="Non détectée" GridPane.columnIndex="1" GridPane.rowIndex="2" styleClass="info-value-dark" />
+                  <Label text="Version OS:" GridPane.columnIndex="0" GridPane.rowIndex="3" styleClass="info-label-dark" />
+                  <Label fx:id="lblDeviceOS" text="Non disponible" GridPane.columnIndex="1" GridPane.rowIndex="3" styleClass="info-value-dark" />
+               </GridPane>
+            </VBox>
+
+            <!-- Actions disponibles -->
+            <VBox spacing="15.0" styleClass="actions-section-dark">
+               <Label styleClass="section-title-dark" text="🎯 Actions Disponibles">
+                  <font>
+                     <Font name="System Bold" size="14.0" />
+                  </font>
+               </Label>
+               <VBox spacing="10.0">
+                  <!-- Bouton intelligent pour sélection d'opération -->
+                  <Button fx:id="btnOperationSelection" mnemonicParsing="false" onAction="#handleOperationSelection" 
+                          styleClass="action-button" text="🎯 Sélecteur d'Opération Intelligent" />
+                          
+                  <HBox spacing="15.0">
+                     <Button fx:id="btnStartUnlock" mnemonicParsing="false" onAction="#handleStartUnlock" 
+                             styleClass="primary-button" text="🚀 Démarrer Déblocage" disable="true" />
+                     <Button fx:id="btnStopOperation" mnemonicParsing="false" onAction="#handleStopOperation" 
+                             styleClass="danger-button" text="⏹ Arrêter Opération" disable="true" />
+                     <Button fx:id="btnResetDevice" mnemonicParsing="false" onAction="#handleResetDevice" 
+                             styleClass="secondary-button" text="🔄 Réinitialiser" disable="true" />
+                  </HBox>
+                  
+                  <!-- Contrôles d'alimentation -->
+                  <VBox spacing="10.0" styleClass="power-section">
+                     <Label styleClass="subsection-title" text="⚡ Contrôle d'Alimentation">
+                        <font>
+                           <Font name="System Bold" size="12.0" />
+                        </font>
+                     </Label>
+                     <HBox spacing="15.0">
+                        <Button fx:id="btnPowerOff" mnemonicParsing="false" onAction="#handlePowerOff" 
+                                styleClass="power-off-button" text="🔴 Éteindre" disable="true" />
+                        <Button fx:id="btnPowerOn" mnemonicParsing="false" onAction="#handlePowerOn" 
+                                styleClass="power-on-button" text="🟢 Allumer" disable="true" />
+                        <Button fx:id="btnReboot" mnemonicParsing="false" onAction="#handleReboot" 
+                                styleClass="reboot-button" text="🔄 Redémarrer" disable="true" />
+                        <Button fx:id="btnLock" mnemonicParsing="false" onAction="#handleLock" 
+                                styleClass="lock-button" text="🔒 Verrouiller" disable="true" />
+                     </HBox>
+                  </VBox>
+               </VBox>
+            </VBox>
+
+            <!-- Console de logs -->
+            <VBox spacing="10.0" styleClass="console-section-dark" VBox.vgrow="ALWAYS">
+               <Label styleClass="section-title-dark" text="📝 Console d'Opération">
+                  <font>
+                     <Font name="System Bold" size="14.0" />
+                  </font>
+               </Label>
+               <TextArea fx:id="txtConsole" editable="false" prefHeight="200.0" 
+                        styleClass="console-text" wrapText="true" />
+               <ProgressBar fx:id="progressOperation" prefWidth="Infinity" progress="0.0" />
+            </VBox>
+         </VBox>
+
+         <!-- Autres pages (à implémenter) -->
+         <Label fx:id="statistiquesPane" styleClass="page-placeholder" text="📊 Page Statistiques - En développement" 
+                visible="false" />
+         <Label fx:id="parametresPane" styleClass="page-placeholder" text="⚙️ Page Paramètres - En développement" 
+                visible="false" />
+         <Label fx:id="aidePane" styleClass="page-placeholder" text="❓ Page Aide - En développement" 
+                visible="false" />
+            </StackPane>
+         </content>
+      </ScrollPane>
+   </center>
+
+   <!-- Barre de statut et footer -->
+   <bottom>
+      <VBox styleClass="footer-section">
+         <!-- Barre de statut -->
+         <HBox alignment="CENTER_LEFT" styleClass="status-bar" spacing="20.0">
+            <Label fx:id="lblStatus" text="Prêt" />
+            <Region HBox.hgrow="ALWAYS" />
+            <Label fx:id="lblDBStatus" text="Base de données: Connectée" />
+            <Label fx:id="lblVersion" text="v1.0.0" />
+            <padding>
+               <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+            </padding>
+         </HBox>
+         
+         <!-- Footer professionnel -->
+         <VBox alignment="CENTER" spacing="5.0" styleClass="copyright-footer">
+            <Label text="Logiciel developpe par : F.Badji" styleClass="footer-text" />
+            <Label text="Logiciel de Déblocage Mobile - © 2025" styleClass="footer-text" />
+            <padding>
+               <Insets bottom="8.0" left="15.0" right="15.0" top="8.0" />
+            </padding>
+         </VBox>
+      </VBox>
+   </bottom>
+</BorderPane>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="com.logicielapp.controller.LoginController">
+   
+   <!-- Arrière-plan principal -->
+   <center>
+      <StackPane styleClass="login-background">
+         
+         <!-- Carte de connexion centrale -->
+         <VBox alignment="CENTER" styleClass="login-card" spacing="25.0" maxWidth="400.0" maxHeight="500.0">
+            
+            <!-- Logo et titre -->
+            <VBox alignment="CENTER" spacing="15.0">
+               <Label styleClass="login-logo" text="🔐">
+                  <font>
+                     <Font size="48.0" />
+                  </font>
+               </Label>
+               <Label styleClass="login-title" text="Logiciel de Déblocage Mobile">
+                  <font>
+                     <Font name="System Bold" size="20.0" />
+                  </font>
+               </Label>
+               <Label styleClass="login-subtitle" text="Authentification Sécurisée">
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+               </Label>
+            </VBox>
+            
+            <!-- Formulaire de connexion -->
+            <VBox spacing="20.0" styleClass="login-form">
+               
+               <!-- Champ email -->
+               <VBox spacing="8.0">
+                  <Label styleClass="field-label" text="Email / Nom d'utilisateur">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtEmail" promptText="admin@logiciel-app.com" styleClass="login-field" />
+               </VBox>
+               
+               <!-- Champ mot de passe -->
+               <VBox spacing="8.0">
+                  <Label styleClass="field-label" text="Mot de passe">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <PasswordField fx:id="txtPassword" promptText="••••••••" styleClass="login-field" />
+               </VBox>
+               
+               <!-- Options -->
+               <HBox alignment="CENTER_LEFT" spacing="15.0">
+                  <CheckBox fx:id="chkRememberMe" styleClass="remember-checkbox" text="Se souvenir de moi" />
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Hyperlink fx:id="linkForgotPassword" onAction="#handleForgotPassword" 
+                            styleClass="forgot-link" text="Mot de passe oublié ?" />
+               </HBox>
+               
+               <!-- Boutons d'action -->
+               <VBox spacing="12.0">
+                  <Button fx:id="btnLogin" defaultButton="true" maxWidth="Infinity" 
+                         onAction="#handleLogin" styleClass="login-button" text="🚀 Se Connecter" />
+                  <Button fx:id="btnCancel" cancelButton="true" maxWidth="Infinity" 
+                         onAction="#handleCancel" styleClass="cancel-button" text="❌ Annuler" />
+               </VBox>
+               
+            </VBox>
+            
+            <!-- Informations de session -->
+            <VBox alignment="CENTER" spacing="10.0" styleClass="session-info">
+               <Label fx:id="lblConnectionStatus" styleClass="status-text" text="En attente de connexion..." />
+               <ProgressIndicator fx:id="progressLogin" maxHeight="20.0" maxWidth="20.0" visible="false" />
+            </VBox>
+            
+            <!-- Pieds de page -->
+            <VBox alignment="CENTER" spacing="8.0" styleClass="login-footer">
+               <Label styleClass="version-label" text="Version 1.0.0" />
+               <HBox alignment="CENTER" spacing="15.0">
+                  <Label styleClass="footer-text" text="Rôles disponibles:" />
+                  <Label styleClass="role-badge admin" text="Admin" />
+                  <Label styleClass="role-badge tech" text="Technicien" />
+                  <Label styleClass="role-badge user" text="Utilisateur" />
+               </HBox>
+            </VBox>
+            
+         </VBox>
+         
+         <!-- Overlay de chargement -->
+         <StackPane fx:id="loadingOverlay" styleClass="loading-overlay" visible="false">
+            <VBox alignment="CENTER" spacing="15.0">
+               <ProgressIndicator fx:id="loadingSpinner" maxHeight="50.0" maxWidth="50.0" />
+               <Label fx:id="lblLoadingText" styleClass="loading-text" text="Vérification des identifiants..." />
+            </VBox>
+         </StackPane>
+         
+      </StackPane>
+   </center>
+   
+   <!-- Barre d'état et footer -->
+   <bottom>
+      <VBox styleClass="footer-section">
+         <!-- Barre d'état -->
+         <HBox alignment="CENTER_LEFT" styleClass="status-bar-login" spacing="15.0">
+            <Label fx:id="lblServerStatus" styleClass="server-status" text="🌐 Serveur: Connecté" />
+            <Region HBox.hgrow="ALWAYS" />
+            <Label fx:id="lblDateTime" styleClass="datetime-label" text="" />
+            <padding>
+               <Insets bottom="8.0" left="15.0" right="15.0" top="8.0" />
+            </padding>
+         </HBox>
+         
+         <!-- Footer professionnel -->
+         <VBox alignment="CENTER" spacing="5.0" styleClass="copyright-footer">
+            <Label text="Logiciel developpe par : F.Badji" styleClass="footer-text" />
+            <Label text="Logiciel de Déblocage Mobile - © 2025" styleClass="footer-text" />
+            <padding>
+               <Insets bottom="8.0" left="15.0" right="15.0" top="8.0" />
+            </padding>
+         </VBox>
+      </VBox>
+   </bottom>
+
+</BorderPane>

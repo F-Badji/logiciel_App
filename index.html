@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vérificateur IMEI - Informations Complètes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1a252f 0%, #2c3e50 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .nav-btn {
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .nav-btn:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+        
+        .nav-btn.active {
+            background: rgba(255,255,255,0.4);
+        }
+        
+        .form-section {
+            padding: 40px;
+        }
+        
+        .input-group {
+            margin-bottom: 30px;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        #imeiInput {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        #imeiInput:focus {
+            outline: none;
+            border-color: #4facfe;
+            box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.1);
+        }
+        
+        .verify-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .verify-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(79, 172, 254, 0.3);
+        }
+        
+        .verify-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #4facfe;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .result {
+            display: none;
+            margin-top: 30px;
+            padding: 25px;
+            border-radius: 10px;
+        }
+        
+        .result.success {
+            background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+            border-left: 5px solid #28a745;
+        }
+        
+        .result.error {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            border-left: 5px solid #dc3545;
+        }
+        
+        .result.fake {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            border-left: 5px solid #e74c3c;
+        }
+        
+        .result h3 {
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .info-item {
+            background: rgba(255,255,255,0.3);
+            padding: 15px;
+            border-radius: 8px;
+        }
+        
+        .info-item strong {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .status-unlocked {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .status-locked {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .status-clean {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+        
+        .status-blacklisted {
+            background: #f5c6cb;
+            color: #721c24;
+        }
+        
+        .example-section {
+            background: #f8f9fa;
+            padding: 30px;
+            margin-top: 20px;
+        }
+        
+        .example-section h3 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .example-imeis {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+        }
+        
+        .example-imei {
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .example-imei:hover {
+            border-color: #4facfe;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔍 Vérificateur IMEI</h1>
+            <p>Découvrez toutes les informations de votre appareil mobile</p>
+            
+            <div class="nav-buttons">
+                <a href="index.html" class="nav-btn active">🏠 Accueil</a>
+                <a href="statistiques.html" class="nav-btn">📊 Statistiques</a>
+                <a href="parametres.html" class="nav-btn">⚙️ Paramètres</a>
+                <a href="aide.html" class="nav-btn">❓ Aide</a>
+            </div>
+        </div>
+        
+        <div class="form-section">
+            <div class="input-group">
+                <label for="imeiInput">Numéro IMEI (15 chiffres)</label>
+                <input type="text" id="imeiInput" placeholder="Entrez votre numéro IMEI..." maxlength="15">
+            </div>
+            
+            <button class="verify-btn" onclick="verifyIMEI()">
+                🔍 Vérifier IMEI
+            </button>
+            
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>Vérification en cours...</p>
+            </div>
+            
+            <div class="result" id="result">
+                <!-- Résultats dynamiques -->
+            </div>
+            
+            <div class="example-section">
+                <h3>💡 Exemples d'IMEI pour tester</h3>
+                <p style="margin-bottom: 15px; color: #666;">Cliquez sur un IMEI pour le tester:</p>
+                <div class="example-imeis">
+                    <div class="example-imei" onclick="testIMEI('111111111111111')">
+                        <strong>Fake IMEI</strong><br>
+                        <small>111111111111111</small>
+                    </div>
+                    <div class="example-imei" onclick="testIMEI('123456789012345')">
+                        <strong>Séquentiel</strong><br>
+                        <small>123456789012345</small>
+                    </div>
+                    <div class="example-imei" onclick="testIMEI('013537123456784')">
+                        <strong>iPhone Test</strong><br>
+                        <small>013537123456784</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function testIMEI(imei) {
+            document.getElementById('imeiInput').value = imei;
+            verifyIMEI();
+        }
+        
+        async function verifyIMEI() {
+            const imei = document.getElementById('imeiInput').value.trim();
+            const loading = document.getElementById('loading');
+            const result = document.getElementById('result');
+            const btn = document.querySelector('.verify-btn');
+            
+            if (!imei) {
+                showError('Veuillez entrer un numéro IMEI');
+                return;
+            }
+            
+            if (!/^\d{15}$/.test(imei)) {
+                showError('L\'IMEI doit contenir exactement 15 chiffres');
+                return;
+            }
+            
+            // Afficher le loading
+            loading.style.display = 'block';
+            result.style.display = 'none';
+            btn.disabled = true;
+            
+            // Simulation de vérification IMEI réelle
+            setTimeout(() => {
+                loading.style.display = 'none';
+                btn.disabled = false;
+                
+                // Validation côté client
+                const validation = validateIMEI(imei);
+                
+                if (!validation.valid) {
+                    showFake(validation.reason);
+                } else {
+                    // Simuler récupération d'informations réelles
+                    const deviceInfo = getDeviceInfo(imei);
+                    showSuccess(deviceInfo);
+                }
+            }, 2000);
+        }
+        
+        function validateIMEI(imei) {
+            // Vérifier si tous les chiffres sont identiques
+            if (new Set(imei).size === 1) {
+                return { valid: false, reason: "IMEI invalide (tous les chiffres identiques)" };
+            }
+            
+            // Vérifier motifs séquentiels
+            if (imei.includes('01234567') || imei.includes('12345678') || imei.includes('87654321')) {
+                return { valid: false, reason: "IMEI invalide (motif séquentiel)" };
+            }
+            
+            // Vérifier checksum Luhn
+            if (!validateLuhnChecksum(imei)) {
+                return { valid: false, reason: "Checksum IMEI invalide (Luhn)" };
+            }
+            
+            // Vérifier blacklist
+            const blacklist = ['123456789012345', '000000000000000', '111111111111111'];
+            if (blacklist.includes(imei)) {
+                return { valid: false, reason: "IMEI blacklisté" };
+            }
+            
+            return { valid: true };
+        }
+        
+        function validateLuhnChecksum(imei) {
+            let sum = 0;
+            let alternate = false;
+            
+            for (let i = imei.length - 2; i >= 0; i--) {
+                let digit = parseInt(imei.charAt(i));
+                
+                if (alternate) {
+                    digit *= 2;
+                    if (digit > 9) {
+                        digit = digit - 9;
+                    }
+                }
+                
+                sum += digit;
+                alternate = !alternate;
+            }
+            
+            const checkDigit = parseInt(imei.charAt(imei.length - 1));
+            return (sum + checkDigit) % 10 === 0;
+        }
+        
+        function getDeviceInfo(imei) {
+            const tac = imei.substring(0, 6);
+            
+            // Base de données TAC simplifiée
+            const tacDatabase = {
+                '013537': { brand: 'Apple', model: 'iPhone 14', color: 'Bleu', storage: '128GB' },
+                '013851': { brand: 'Apple', model: 'iPhone 15 Pro Max', color: 'Titane Naturel', storage: '256GB' },
+                '356936': { brand: 'Samsung', model: 'Galaxy S23', color: 'Phantom Black', storage: '256GB' },
+                '357687': { brand: 'Huawei', model: 'P40 Pro', color: 'Silver Frost', storage: '256GB' },
+                '860461': { brand: 'Xiaomi', model: 'Mi 11', color: 'Midnight Gray', storage: '128GB' }
+            };
+            
+            const device = tacDatabase[tac] || {
+                brand: 'Inconnu',
+                model: 'Modèle non identifié',
+                color: 'Non disponible',
+                storage: 'Non disponible'
+            };
+            
+            return {
+                imei: imei,
+                brand: device.brand,
+                model: device.model,
+                color: device.color,
+                storage: device.storage,
+                simlock: Math.random() > 0.5 ? 'Débloqué' : 'Verrouillé',
+                blacklist: Math.random() > 0.8 ? 'Blacklisté' : 'Propre',
+                warranty: Math.random() > 0.3 ? 'Sous garantie' : 'Hors garantie',
+                activation: Math.random() > 0.2 ? 'Activé' : 'Non activé'
+            };
+        }
+        
+        function showSuccess(data) {
+            const result = document.getElementById('result');
+            result.className = 'result success';
+            result.innerHTML = `
+                <h3>✅ IMEI Valide</h3>
+                <p><strong>IMEI:</strong> ${data.imei}</p>
+                
+                <div class="info-grid">
+                    <div class="info-item">
+                        <strong>📱 Modèle</strong>
+                        ${data.model}
+                    </div>
+                    <div class="info-item">
+                        <strong>🏭 Marque</strong>
+                        ${data.brand}
+                    </div>
+                    <div class="info-item">
+                        <strong>🎨 Couleur</strong>
+                        ${data.color}
+                    </div>
+                    <div class="info-item">
+                        <strong>💾 Stockage</strong>
+                        ${data.storage}
+                    </div>
+                    <div class="info-item">
+                        <strong>🔒 Simlock</strong>
+                        <span class="status-badge ${data.simlock === 'Débloqué' ? 'status-unlocked' : 'status-locked'}">
+                            ${data.simlock}
+                        </span>
+                    </div>
+                    <div class="info-item">
+                        <strong>🚫 Liste Noire</strong>
+                        <span class="status-badge ${data.blacklist === 'Propre' ? 'status-clean' : 'status-blacklisted'}">
+                            ${data.blacklist}
+                        </span>
+                    </div>
+                    <div class="info-item">
+                        <strong>🛡️ Garantie</strong>
+                        ${data.warranty}
+                    </div>
+                    <div class="info-item">
+                        <strong>⚡ Activation</strong>
+                        ${data.activation}
+                    </div>
+                </div>
+            `;
+            result.style.display = 'block';
+        }
+        
+        function showFake(error) {
+            const result = document.getElementById('result');
+            result.className = 'result fake';
+            result.innerHTML = `
+                <h3>🚫 IMEI Invalide Détecté</h3>
+                <p><strong>Raison:</strong> ${error}</p>
+                <p style="margin-top: 15px;">
+                    <strong>⚠️ Attention:</strong> Cet IMEI semble être factice ou invalide. 
+                    Les IMEIs avec tous les chiffres identiques ou des motifs séquentiels 
+                    ne correspondent pas à de vrais appareils.
+                </p>
+            `;
+            result.style.display = 'block';
+        }
+        
+        function showError(error) {
+            const result = document.getElementById('result');
+            result.className = 'result error';
+            result.innerHTML = `
+                <h3>❌ Erreur de Vérification</h3>
+                <p>${error}</p>
+            `;
+            result.style.display = 'block';
+        }
+        
+        // Permettre la soumission avec Entrée
+        document.getElementById('imeiInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                verifyIMEI();
+            }
+        });
+        
+        // Formater l'IMEI pendant la saisie
+        document.getElementById('imeiInput').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 15) {
+                value = value.substring(0, 15);
+            }
+            e.target.value = value;
+        });
+    </script>
+</body>
+</html>

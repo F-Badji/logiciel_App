@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.logicielapp.controller.HelpController" styleClass="dark-background">
+   <top>
+      <VBox alignment="CENTER" style="-fx-background-color: linear-gradient(to bottom right, #4facfe, #00f2fe);">
+         <children>
+            <Label text="❓ Aide &amp; Support" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="28.0" />
+               </font>
+            </Label>
+            <Label text="Obtenez de l'aide et contactez notre équipe" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+                        <HBox alignment="CENTER" spacing="15.0">
+               <children>
+                  <Button fx:id="homeBtn" mnemonicParsing="false" onAction="#closeWindow" styleClass="close-button-dark" text="❌ Fermer" />
+                  <Button fx:id="statisticsBtn" mnemonicParsing="false" onAction="#openStatistics" styleClass="nav-button-dark" text="📊 Statistiques" />
+                  <Button fx:id="parametersBtn" mnemonicParsing="false" onAction="#openParameters" styleClass="nav-button-dark" text="⚙️ Paramètres" />
+                  <Button fx:id="helpBtn" mnemonicParsing="false" styleClass="nav-button-active" text="❓ Aide" />
+               </children>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+         <padding>
+            <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+         </padding>
+      </VBox>
+   </top>
+   <center>
+      <ScrollPane fitToWidth="true" style="-fx-background-color: transparent;">
+         <content>
+            <VBox spacing="30.0">
+               <children>
+                  <!-- Section Contact Hero -->
+                  <VBox alignment="CENTER" spacing="20.0" style="-fx-background-color: linear-gradient(to bottom right, #25D366, #128C7E); -fx-background-radius: 20; -fx-effect: dropshadow(gaussian, rgba(37,211,102,0.3), 15, 0, 0, 5);">
+                     <children>
+                        <Label text="💬 Contactez-nous directement" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label text="Notre équipe est disponible pour vous aider avec vos questions" textFill="WHITE">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="whatsappBtn" mnemonicParsing="false" onAction="#openWhatsApp" style="-fx-background-color: white; -fx-text-fill: #25D366; -fx-background-radius: 25; -fx-font-weight: bold; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 3);" text="📱 Contacter via WhatsApp">
+                           <padding>
+                              <Insets bottom="15.0" left="30.0" right="30.0" top="15.0" />
+                           </padding>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Button>
+                     </children>
+                     <padding>
+                        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                     </padding>
+                  </VBox>
+                  
+                  <!-- Méthodes de contact -->
+                  <GridPane hgap="30.0" vgap="30.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <VBox alignment="CENTER" spacing="15.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 5);">
+                           <children>
+                              <StackPane style="-fx-background-color: linear-gradient(to bottom right, #25D366, #128C7E); -fx-background-radius: 40; -fx-min-width: 80; -fx-min-height: 80;">
+                                 <ImageView fitHeight="50" fitWidth="50" preserveRatio="true">
+                                    <image>
+                                       <Image url="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/1022px-WhatsApp.svg.png" />
+                                    </image>
+                                 </ImageView>
+                              </StackPane>
+                              <Label text="WhatsApp">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <VBox alignment="CENTER">
+                                 <children>
+                                    <Label text="Numéro: 76-971-93-83">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Disponible 24h/24, 7j/7" textFill="#666666">
+                                       <font>
+                                          <Font size="12.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <Button fx:id="whatsappContactBtn" mnemonicParsing="false" onAction="#openWhatsApp" styleClass="action-button">
+                                 <graphic>
+                                    <HBox alignment="CENTER" spacing="8">
+                                       <ImageView fitHeight="16" fitWidth="16" preserveRatio="true">
+                                          <image>
+                                             <Image url="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/1022px-WhatsApp.svg.png" />
+                                          </image>
+                                       </ImageView>
+                                       <Label text="Contacter" textFill="white" />
+                                    </HBox>
+                                 </graphic>
+                              </Button>
+                           </children>
+                           <padding>
+                              <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+                           </padding>
+                        </VBox>
+                        
+                        <VBox alignment="CENTER" spacing="15.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 5);" GridPane.columnIndex="1">
+                           <children>
+                              <Label style="-fx-background-color: linear-gradient(to bottom right, #EA4335, #FBBC05); -fx-background-radius: 40; -fx-text-fill: white; -fx-min-width: 80; -fx-min-height: 80; -fx-alignment: center;" text="✉️">
+                                 <font>
+                                    <Font size="32.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Email">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <VBox alignment="CENTER">
+                                 <children>
+                                    <Label text="Adresse: digitex.officiel@gmail.com">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Réponse sous 24h" textFill="#666666">
+                                       <font>
+                                          <Font size="12.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <Button fx:id="emailContactBtn" mnemonicParsing="false" onAction="#openEmail" style="-fx-background-color: linear-gradient(to bottom right, #4facfe, #00f2fe); -fx-text-fill: white; -fx-background-radius: 25; -fx-font-weight: bold;" text="Envoyer un Email">
+                                 <padding>
+                                    <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                                 </padding>
+                              </Button>
+                           </children>
+                           <padding>
+                              <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </GridPane>
+                  
+                  <!-- Fonctionnalités principales -->
+                  <VBox spacing="20.0" style="-fx-background-color: #f8f9fa; -fx-background-radius: 15;">
+                     <children>
+                        <Label text="🚀 Fonctionnalités Principales" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <GridPane hgap="20.0" vgap="20.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <VBox alignment="CENTER" spacing="10.0" style="-fx-background-color: white; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);">
+                                 <children>
+                                    <Label text="🔍">
+                                       <font>
+                                          <Font size="36.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Vérification IMEI">
+                                       <font>
+                                          <Font name="System Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Vérification complète avec base TAC GSMA étendue" textAlignment="CENTER" textFill="#666666" wrapText="true">
+                                       <font>
+                                          <Font size="12.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                 </padding>
+                              </VBox>
+                              
+                              <VBox alignment="CENTER" spacing="10.0" style="-fx-background-color: white; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);" GridPane.columnIndex="1">
+                                 <children>
+                                    <Label text="🛡️">
+                                       <font>
+                                          <Font size="36.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Détection Fake">
+                                       <font>
+                                          <Font name="System Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Détection automatique des IMEI invalides" textAlignment="CENTER" textFill="#666666" wrapText="true">
+                                       <font>
+                                          <Font size="12.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                 </padding>
+                              </VBox>
+                              
+                              <VBox alignment="CENTER" spacing="10.0" style="-fx-background-color: white; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);" GridPane.rowIndex="1">
+                                 <children>
+                                    <Label text="📊">
+                                       <font>
+                                          <Font size="36.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Statistiques">
+                                       <font>
+                                          <Font name="System Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Tableau de bord complet avec métriques" textAlignment="CENTER" textFill="#666666" wrapText="true">
+                                       <font>
+                                          <Font size="12.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                 </padding>
+                              </VBox>
+                              
+                              <VBox alignment="CENTER" spacing="10.0" style="-fx-background-color: white; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <children>
+                                    <Label text="⚙️">
+                                       <font>
+                                          <Font size="36.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Configuration">
+                                       <font>
+                                          <Font name="System Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Paramètres avancés et personnalisation" textAlignment="CENTER" textFill="#666666" wrapText="true">
+                                       <font>
+                                          <Font size="12.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                        </GridPane>
+                     </children>
+                     <padding>
+                        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                     </padding>
+                  </VBox>
+                  
+                  <!-- FAQ Section -->
+                  <VBox spacing="15.0" style="-fx-background-color: #f8f9fa; -fx-background-radius: 15;">
+                     <children>
+                        <Label text="❓ Questions Fréquentes" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        
+                        <Accordion fx:id="faqAccordion">
+                           <panes>
+                              <TitledPane text="Comment vérifier un IMEI ?">
+                                 <content>
+                                    <Label text="Entrez simplement votre numéro IMEI de 15 chiffres dans le champ prévu à cet effet sur la page d'accueil et cliquez sur &quot;Vérifier IMEI&quot;. Notre système utilisera plusieurs APIs pour récupérer les informations complètes de votre appareil." wrapText="true">
+                                       <padding>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </padding>
+                                    </Label>
+                                 </content>
+                              </TitledPane>
+                              <TitledPane text="Que faire si mon IMEI est détecté comme fake ?">
+                                 <content>
+                                    <Label text="Si votre IMEI est détecté comme fake, cela signifie qu'il ne respecte pas les standards GSMA ou qu'il contient des patterns invalides (tous les chiffres identiques, séquences, etc.). Vérifiez que vous avez saisi le bon IMEI depuis les paramètres de votre téléphone." wrapText="true">
+                                       <padding>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </padding>
+                                    </Label>
+                                 </content>
+                              </TitledPane>
+                              <TitledPane text="Quelles informations puis-je obtenir ?">
+                                 <content>
+                                    <Label text="Notre système peut récupérer : la marque et le modèle, la couleur et la capacité de stockage, le statut de verrouillage opérateur, le statut de liste noire, les informations de garantie, le statut d'activation, et pour les appareils Apple, le statut iCloud." wrapText="true">
+                                       <padding>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </padding>
+                                    </Label>
+                                 </content>
+                              </TitledPane>
+                              <TitledPane text="Les données sont-elles sécurisées ?">
+                                 <content>
+                                    <Label text="Oui, nous prenons la sécurité très au sérieux. Les IMEI sont partiellement masqués dans les logs, toutes les communications sont chiffrées, et nous ne stockons aucune donnée personnelle de manière permanente." wrapText="true">
+                                       <padding>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </padding>
+                                    </Label>
+                                 </content>
+                              </TitledPane>
+                              <TitledPane text="Comment contacter le support ?">
+                                 <content>
+                                    <Label text="Vous pouvez nous contacter directement via WhatsApp au 76-971-93-83 ou par email à digitex.officiel@gmail.com. Notre équipe est disponible pour répondre à toutes vos questions et vous aider avec le déblocage de vos appareils." wrapText="true">
+                                       <padding>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </padding>
+                                    </Label>
+                                 </content>
+                              </TitledPane>
+                           </panes>
+                        </Accordion>
+                     </children>
+                     <padding>
+                        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                     </padding>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+               </padding>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </center>
+   <!-- Footer professionnel -->
+   <bottom>
+      <VBox alignment="CENTER" spacing="5.0" styleClass="copyright-footer">
+         <Label text="Logiciel developpe par : F.Badji" styleClass="footer-text" />
+         <Label text="Logiciel de Déblocage Mobile - © 2025" styleClass="footer-text" />
+         <padding>
+            <Insets bottom="8.0" left="15.0" right="15.0" top="8.0" />
+         </padding>
+      </VBox>
+   </bottom>
+
+</BorderPane>

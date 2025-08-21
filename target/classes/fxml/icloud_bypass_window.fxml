@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="com.logicielapp.controller.iCloudBypassController" styleClass="dark-background">
+
+    <!-- En-tête -->
+    <top>
+        <VBox styleClass="header-section">
+            <HBox alignment="CENTER" styleClass="title-bar">
+                <Label styleClass="window-title" text="🍎 Déblocage iCloud - Style 3uTools">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Label>
+            </HBox>
+            
+            <HBox alignment="CENTER" spacing="20.0" styleClass="info-bar">
+                <Label text="Déblocage iCloud Automatique - Compatible iOS 7.0 à 18.6.1 - Déverrouillage Officiel" 
+                       styleClass="info-text" />
+            </HBox>
+        </VBox>
+    </top>
+
+    <!-- Contenu principal -->
+    <center>
+        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED">
+            <content>
+                <VBox spacing="20.0" styleClass="main-content">
+                    <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                    </padding>
+
+            <!-- Section détection d'appareil -->
+            <VBox spacing="15.0" styleClass="section-box-dark">
+                <Label text="📱 Détection et Analyse d'Appareil" styleClass="section-title-dark">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Label>
+                
+                <HBox spacing="15.0" alignment="CENTER_LEFT">
+                    <Button fx:id="detectBtn" text="🔍 Détecter Appareils iOS" 
+                            onAction="#handleDetectDevices" styleClass="action-button-dark" />
+                    <Button fx:id="refreshBtn" text="🔄 Actualiser" 
+                            onAction="#handleRefreshDevices" styleClass="action-button-dark" />
+                    <Button fx:id="analyzeBtn" text="🔬 Analyser Sécurité" 
+                            onAction="#handleAnalyzeSecurity" styleClass="action-button-dark" />
+                </HBox>
+                
+                <VBox spacing="10.0">
+                    <Label text="Appareil détecté:" styleClass="field-label-dark" />
+                    <ComboBox fx:id="deviceComboBox" promptText="Aucun appareil détecté" 
+                              prefWidth="400.0" styleClass="device-combo-dark" />
+                </VBox>
+                
+                <GridPane hgap="15.0" vgap="10.0">
+                    <columnConstraints>
+                        <ColumnConstraints minWidth="120.0" />
+                        <ColumnConstraints minWidth="200.0" />
+                        <ColumnConstraints minWidth="120.0" />
+                        <ColumnConstraints minWidth="200.0" />
+                    </columnConstraints>
+                    
+                    <Label text="Modèle:" styleClass="info-label-dark" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                    <Label fx:id="modelLabel" text="Non détecté" styleClass="info-value-dark" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                    
+                    <Label text="IMEI:" styleClass="info-label-dark" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                    <Label fx:id="imeiLabel" text="Non disponible" styleClass="info-value-dark" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+                    
+                    <Label text="État:" styleClass="info-label-dark" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                    <Label fx:id="stateLabel" text="Inconnu" styleClass="info-value-dark" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                    
+                    <Label text="Statut iCloud:" styleClass="info-label-dark" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                    <Label fx:id="icloudStatusLabel" text="Vérification..." styleClass="info-value-dark" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                    
+                    <Label text="Version iOS:" styleClass="info-label-dark" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                    <Label fx:id="iosVersionLabel" text="Inconnue" styleClass="info-value-dark" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                    
+                    <Label text="Compatibilité:" styleClass="info-label-dark" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                    <Label fx:id="compatibilityLabel" text="En cours..." styleClass="info-value-dark" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                </GridPane>
+            </VBox>
+
+            <!-- Section méthodes de déblocage -->
+            <VBox spacing="15.0" styleClass="section-box-dark">
+                <Label text="🔓 Méthodes de Déblocage iCloud" styleClass="section-title-dark">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Label>
+                
+                <VBox spacing="10.0">
+                    <RadioButton fx:id="officialUnlockRadio" text="🏆 Déblocage Officiel (Recommandé)" 
+                                 selected="true" styleClass="method-radio">
+                        <toggleGroup>
+                            <ToggleGroup fx:id="unlockMethodGroup" />
+                        </toggleGroup>
+                    </RadioButton>
+                    
+                    <RadioButton fx:id="bypassSignalRadio" text="📶 Bypass avec Signal (Réseau + Puce)" 
+                                 toggleGroup="$unlockMethodGroup" styleClass="method-radio" />
+                    
+                    <RadioButton fx:id="bypassNoSignalRadio" text="📵 Bypass sans Signal (WiFi uniquement)" 
+                                 toggleGroup="$unlockMethodGroup" styleClass="method-radio" />
+                    
+                    <RadioButton fx:id="hardwareUnlockRadio" text="🔧 Déblocage Matériel (Avancé)" 
+                                 toggleGroup="$unlockMethodGroup" styleClass="method-radio" />
+                </VBox>
+                
+                <VBox spacing="10.0">
+                    <Label text="ℹ️ Le déblocage officiel supprime définitivement le verrouillage iCloud de l'appareil" 
+                           styleClass="info-text" wrapText="true" />
+                    <Label text="📶 Bypass avec Signal: Fonctionne avec réseau cellulaire et puce SIM" 
+                           styleClass="info-text" wrapText="true" />
+                    <Label text="📵 Bypass sans Signal: WiFi uniquement, pas de réseau cellulaire ni puce" 
+                           styleClass="info-text" wrapText="true" />
+                    <Label text="⚠️ ATTENTION: Si l'appareil est réinitialisé, il demandera obligatoirement le compte iCloud original" 
+                           styleClass="warning-text" wrapText="true" />
+                    <CheckBox fx:id="autoRebootCheckBox" text="Redémarrage automatique après déblocage" 
+                              selected="true" styleClass="option-checkbox" />
+                    <CheckBox fx:id="backupDataCheckBox" text="Sauvegarder les données avant déblocage" 
+                              selected="false" styleClass="option-checkbox" />
+                    <CheckBox fx:id="verifyUnlockCheckBox" text="Vérifier le déblocage après traitement" 
+                              selected="true" styleClass="option-checkbox" />
+                </VBox>
+            </VBox>
+            
+            <!-- Section informations de déblocage -->
+            <VBox spacing="15.0" styleClass="section-box">
+                <Label text="📋 Informations de Déblocage" styleClass="section-title">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Label>
+                
+                <GridPane hgap="15.0" vgap="10.0">
+                    <columnConstraints>
+                        <ColumnConstraints minWidth="150.0" />
+                        <ColumnConstraints minWidth="300.0" />
+                    </columnConstraints>
+                    
+                    <Label text="IMEI/Numéro de série:" styleClass="field-label" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                    <TextField fx:id="imeiField" promptText="Entrez l'IMEI ou numéro de série" 
+                               styleClass="input-field" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                    
+                    <Label text="Modèle d'appareil:" styleClass="field-label" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                    <ComboBox fx:id="deviceModelCombo" promptText="Sélectionnez le modèle" 
+                              styleClass="model-combo" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                    
+                    <Label text="Version iOS:" styleClass="field-label" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                    <ComboBox fx:id="iosVersionCombo" promptText="Sélectionnez la version iOS" 
+                              styleClass="version-combo" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                </GridPane>
+                
+                <HBox spacing="10.0" alignment="CENTER_LEFT">
+                    <Button fx:id="validateInfoBtn" text="✅ Valider les Informations" 
+                            onAction="#handleValidateInfo" styleClass="validate-button" />
+                    <Button fx:id="autoFillBtn" text="🔄 Remplissage Automatique" 
+                            onAction="#handleAutoFill" styleClass="autofill-button" />
+                </HBox>
+            </VBox>
+
+            <!-- Section progression -->
+            <VBox spacing="15.0" styleClass="section-box">
+                <Label text="📊 Progression du Déblocage iCloud" styleClass="section-title">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Label>
+                
+                <VBox spacing="10.0">
+                    <HBox spacing="10.0" alignment="CENTER_LEFT">
+                        <Label text="Statut:" styleClass="field-label" />
+                        <Label fx:id="statusLabel" text="Prêt" styleClass="status-ready" />
+                    </HBox>
+                    
+                    <ProgressBar fx:id="progressBar" prefWidth="500.0" progress="0" 
+                                 styleClass="bypass-progress" />
+                    
+                    <Label fx:id="progressLabel" text="En attente..." styleClass="progress-text" />
+                </VBox>
+            </VBox>
+
+            <!-- Section logs -->
+            <VBox spacing="15.0" styleClass="section-box">
+                <HBox spacing="10.0" alignment="CENTER_LEFT">
+                    <Label text="📝 Journal d'Activité" styleClass="section-title">
+                        <font>
+                            <Font name="System Bold" size="14.0" />
+                        </font>
+                    </Label>
+                    <Button fx:id="clearLogsBtn" text="🗑️ Effacer" onAction="#handleClearLogs" 
+                            styleClass="clear-button" />
+                </HBox>
+                
+                <TextArea fx:id="logArea" prefHeight="200.0" editable="false" 
+                          wrapText="true" styleClass="log-area" 
+                          promptText="Les détails du processus de déblocage s'afficheront ici..." />
+            </VBox>
+                </VBox>
+            </content>
+        </ScrollPane>
+    </center>
+
+    <!-- Boutons d'action et footer -->
+    <bottom>
+        <VBox styleClass="footer-section">
+            <!-- Boutons d'action -->
+            <HBox spacing="15.0" alignment="CENTER" styleClass="button-bar">
+                <padding>
+                    <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
+                </padding>
+                
+                <Button fx:id="startUnlockBtn" text="🚀 Démarrer le Déblocage" 
+                        onAction="#handleStartUnlock" styleClass="start-button" 
+                        disable="true" prefWidth="200.0" />
+                
+                <Button fx:id="stopBtn" text="⏹️ Arrêter" onAction="#handleStopUnlock" 
+                        styleClass="stop-button" disable="true" prefWidth="120.0" />
+                
+                <Button fx:id="helpBtn" text="❓ Aide" onAction="#handleHelp" 
+                        styleClass="help-button" prefWidth="100.0" />
+                
+                <Button fx:id="closeBtn" text="❌ Fermer" onAction="#handleClose" 
+                        styleClass="close-button" prefWidth="100.0" />
+            </HBox>
+            
+            <!-- Footer professionnel -->
+            <VBox alignment="CENTER" spacing="5.0" styleClass="copyright-footer">
+                <Label text="Logiciel developpe par : F.Badji" styleClass="footer-text" />
+                <Label text="Logiciel de Déblocage Mobile - © 2025" styleClass="footer-text" />
+                <padding>
+                    <Insets bottom="8.0" left="15.0" right="15.0" top="8.0" />
+                </padding>
+            </VBox>
+        </VBox>
+    </bottom>
+
+</BorderPane>

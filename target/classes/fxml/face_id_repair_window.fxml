@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="com.logicielapp.controller.FaceIDRepairController" styleClass="dark-background">
+
+    <!-- En-tête -->
+    <top>
+        <VBox styleClass="header-section">
+            <HBox alignment="CENTER" styleClass="title-bar">
+                <Label styleClass="window-title" text="🔒 Réparation Face ID - Diagnostic et Calibration">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Label>
+            </HBox>
+            
+            <HBox alignment="CENTER" spacing="20.0" styleClass="info-bar">
+                <Label text="Diagnostic et Réparation Face ID - Compatible iPhone X à iPhone 15 Pro Max" 
+                       styleClass="info-text" />
+            </HBox>
+        </VBox>
+    </top>
+
+    <!-- Contenu principal -->
+    <center>
+        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED">
+            <content>
+                <VBox spacing="20.0" styleClass="main-content">
+                    <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                    </padding>
+
+                    <!-- Section détection d'appareil -->
+                    <VBox spacing="10.0" styleClass="section-box-dark">
+                        <Label text="📱 Détection et Analyse d'Appareil" styleClass="section-title-dark">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                        </Label>
+                        
+                        <HBox spacing="8.0" alignment="CENTER_LEFT">
+                            <Button fx:id="detectBtn" text="🔍 Détecter iPhone" 
+                                    onAction="#handleDetectDevices" styleClass="action-button-dark" />
+                            <Button fx:id="refreshBtn" text="🔄 Actualiser" 
+                                    onAction="#handleRefreshDevices" styleClass="action-button-dark" />
+                            <Button fx:id="diagnoseFaceIDBtn" text="🔬 Diagnostic Face ID" 
+                                    onAction="#handleDiagnoseFaceID" styleClass="action-button-dark" />
+                        </HBox>
+                        
+                        <VBox spacing="10.0">
+                            <Label text="Appareil détecté:" styleClass="field-label-dark" />
+                            <ComboBox fx:id="deviceComboBox" promptText="Aucun appareil détecté" 
+                                      prefWidth="400.0" styleClass="device-combo-dark" />
+                        </VBox>
+                        
+                        <GridPane hgap="15.0" vgap="10.0">
+                            <columnConstraints>
+                                <ColumnConstraints minWidth="120.0" />
+                                <ColumnConstraints minWidth="200.0" />
+                                <ColumnConstraints minWidth="120.0" />
+                                <ColumnConstraints minWidth="200.0" />
+                            </columnConstraints>
+                            
+                            <Label text="Modèle:" styleClass="info-label-dark" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                            <Label fx:id="modelLabel" text="Non détecté" styleClass="info-value-dark" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                            
+                            <Label text="Face ID:" styleClass="info-label-dark" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                            <Label fx:id="faceIDStatusLabel" text="Non testé" styleClass="info-value-dark" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+                            
+                            <Label text="Version iOS:" styleClass="info-label-dark" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                            <Label fx:id="iosVersionLabel" text="Inconnue" styleClass="info-value-dark" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                            
+                            <Label text="Capteur TrueDepth:" styleClass="info-label-dark" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                            <Label fx:id="trueDepthStatusLabel" text="En cours..." styleClass="info-value-dark" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                            
+                            <Label text="Numéro de série:" styleClass="info-label-dark" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                            <Label fx:id="serialLabel" text="Non disponible" styleClass="info-value-dark" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                            
+                            <Label text="Compatibilité:" styleClass="info-label-dark" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                            <Label fx:id="compatibilityLabel" text="Vérification..." styleClass="info-value-dark" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                        </GridPane>
+                    </VBox>
+
+                    <!-- Section diagnostic Face ID -->
+                    <VBox spacing="10.0" styleClass="section-box-dark">
+                        <Label text="🔍 Diagnostic Face ID Avancé" styleClass="section-title-dark">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                        </Label>
+                        
+                        <GridPane hgap="20.0" vgap="15.0">
+                            <columnConstraints>
+                                <ColumnConstraints minWidth="200.0" />
+                                <ColumnConstraints minWidth="150.0" />
+                                <ColumnConstraints minWidth="200.0" />
+                                <ColumnConstraints minWidth="150.0" />
+                            </columnConstraints>
+                            
+                            <Label text="📷 Caméra TrueDepth:" styleClass="diagnostic-label-dark" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                            <Label fx:id="cameraStatusLabel" text="Non testé" styleClass="status-pending-dark" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                            
+                            <Label text="💡 Projecteur infrarouge:" styleClass="diagnostic-label-dark" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                            <Label fx:id="projectorStatusLabel" text="Non testé" styleClass="status-pending-dark" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+                            
+                            <Label text="📡 Capteur de proximité:" styleClass="diagnostic-label-dark" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                            <Label fx:id="proximityStatusLabel" text="Non testé" styleClass="status-pending-dark" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                            
+                            <Label text="🌟 Illuminateur infrarouge:" styleClass="diagnostic-label-dark" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                            <Label fx:id="illuminatorStatusLabel" text="Non testé" styleClass="status-pending-dark" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                            
+                            <Label text="🧠 Processeur Neural Engine:" styleClass="diagnostic-label-dark" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                            <Label fx:id="neuralEngineStatusLabel" text="Non testé" styleClass="status-pending-dark" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                            
+                            <Label text="🔐 Secure Enclave:" styleClass="diagnostic-label-dark" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                            <Label fx:id="secureEnclaveStatusLabel" text="Non testé" styleClass="status-pending-dark" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                        </GridPane>
+                        
+                        <HBox spacing="8.0" alignment="CENTER_LEFT">
+                            <Button fx:id="runFullDiagnosticBtn" text="🔬 Diagnostic Complet" 
+                                    onAction="#handleRunFullDiagnostic" styleClass="action-button-dark" />
+                            <Button fx:id="testFaceIDBtn" text="👤 Test Face ID" 
+                                    onAction="#handleTestFaceID" styleClass="action-button-dark" />
+                            <Button fx:id="calibrateSensorsBtn" text="⚙️ Calibrer Capteurs" 
+                                    onAction="#handleCalibrateSensors" styleClass="action-button-dark" />
+                        </HBox>
+                    </VBox>
+
+                    <!-- Section outils de réparation -->
+                    <VBox spacing="10.0" styleClass="section-box-dark">
+                        <Label text="🔧 Outils de Réparation Face ID" styleClass="section-title-dark">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                        </Label>
+                        
+                        <VBox spacing="6.0">
+                            <RadioButton fx:id="softwareRepairRadio" text="💻 Réparation Logicielle (Recommandé)" 
+                                         selected="true" styleClass="radio-button-dark">
+                                <toggleGroup>
+                                    <ToggleGroup fx:id="repairMethodGroup" />
+                                </toggleGroup>
+                            </RadioButton>
+                            
+                            <RadioButton fx:id="firmwareRepairRadio" text="🔄 Réparation Firmware" 
+                                         toggleGroup="$repairMethodGroup" styleClass="radio-button-dark" />
+                            
+                            <RadioButton fx:id="hardwareCalibrationRadio" text="⚙️ Calibration Matérielle" 
+                                         toggleGroup="$repairMethodGroup" styleClass="radio-button-dark" />
+                            
+                            <RadioButton fx:id="factoryResetRadio" text="🏭 Réinitialisation Usine Face ID" 
+                                         toggleGroup="$repairMethodGroup" styleClass="radio-button-dark" />
+                        </VBox>
+                        
+                        <VBox spacing="6.0">
+                            <Label text="ℹ️ La réparation logicielle corrige la plupart des problèmes Face ID sans risque" 
+                                   styleClass="info-text-dark" wrapText="true" />
+                            <CheckBox fx:id="backupFaceIDCheckBox" text="Sauvegarder les données Face ID avant réparation" 
+                                      selected="true" styleClass="checkbox-dark" />
+                            <CheckBox fx:id="testAfterRepairCheckBox" text="Tester Face ID après réparation" 
+                                      selected="true" styleClass="checkbox-dark" />
+                            <CheckBox fx:id="recalibrateCheckBox" text="Recalibrer automatiquement les capteurs" 
+                                      selected="false" styleClass="checkbox-dark" />
+                        </VBox>
+                    </VBox>
+
+                    <!-- Section progression -->
+                    <VBox spacing="10.0" styleClass="section-box-dark">
+                        <Label text="📊 Progression de la Réparation" styleClass="section-title-dark">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                        </Label>
+                        
+                        <VBox spacing="6.0">
+                            <HBox spacing="10.0" alignment="CENTER_LEFT">
+                                <Label text="Statut:" styleClass="field-label-dark" />
+                                <Label fx:id="statusLabel" text="Prêt" styleClass="status-ready-dark" />
+                            </HBox>
+                            
+                            <ProgressBar fx:id="progressBar" prefWidth="500.0" progress="0" 
+                                         styleClass="repair-progress-dark" />
+                            
+                            <Label fx:id="progressLabel" text="En attente..." styleClass="progress-text-dark" />
+                        </VBox>
+                    </VBox>
+
+                    <!-- Section logs -->
+                    <VBox spacing="10.0" styleClass="section-box-dark">
+                        <HBox spacing="10.0" alignment="CENTER_LEFT">
+                            <Label text="📝 Journal de Réparation" styleClass="section-title-dark">
+                                <font>
+                                    <Font name="System Bold" size="14.0" />
+                                </font>
+                            </Label>
+                            <Button fx:id="clearLogsBtn" text="🗑️ Effacer" onAction="#handleClearLogs" 
+                                    styleClass="action-button-dark" />
+                        </HBox>
+                        
+                        <TextArea fx:id="logArea" prefHeight="80.0" editable="false" 
+                                  wrapText="true" styleClass="text-area-dark" 
+                                  promptText="Les détails du processus de réparation s'afficheront ici..." />
+                    </VBox>
+                </VBox>
+            </content>
+        </ScrollPane>
+    </center>
+
+    <!-- Boutons d'action et footer -->
+    <bottom>
+        <VBox styleClass="footer-section">
+            <!-- Boutons d'action -->
+            <HBox spacing="15.0" alignment="CENTER" styleClass="button-bar">
+                <padding>
+                    <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
+                </padding>
+                
+                <Button fx:id="startRepairBtn" text="🚀 Démarrer la Réparation" 
+                        onAction="#handleStartRepair" styleClass="start-button" 
+                        disable="true" prefWidth="200.0" />
+                
+                <Button fx:id="stopBtn" text="⏹️ Arrêter" onAction="#handleStopRepair" 
+                        styleClass="stop-button" disable="true" prefWidth="120.0" />
+                
+                <Button fx:id="helpBtn" text="❓ Aide" onAction="#handleHelp" 
+                        styleClass="help-button" prefWidth="100.0" />
+                
+                <Button fx:id="closeBtn" text="❌ Fermer" onAction="#handleClose" 
+                        styleClass="close-button" prefWidth="100.0" />
+            </HBox>
+            
+            <!-- Footer professionnel -->
+            <VBox alignment="CENTER" spacing="5.0" styleClass="copyright-footer">
+                <Label text="Logiciel developpe par : F.Badji" styleClass="footer-text" />
+                <Label text="Logiciel de Déblocage Mobile - © 2025" styleClass="footer-text" />
+                <padding>
+                    <Insets bottom="8.0" left="15.0" right="15.0" top="8.0" />
+                </padding>
+            </VBox>
+        </VBox>
+    </bottom>
+
+</BorderPane>

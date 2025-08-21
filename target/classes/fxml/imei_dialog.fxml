@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="com.logicielapp.controller.IMEIDialogController"
+      spacing="20.0" styleClass="imei-dialog">
+
+   <!-- Titre -->
+   <Label styleClass="dialog-title" text="📡 Déblocage IMEI à Distance">
+      <font>
+         <Font name="System Bold" size="18.0" />
+      </font>
+   </Label>
+
+   <!-- Description -->
+   <VBox spacing="10.0" styleClass="description-section">
+      <Label styleClass="section-title" text="🔍 Informations requises">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label styleClass="description-text" text="Pour effectuer un déblocage IMEI à distance, veuillez saisir les informations de l'appareil ci-dessous." 
+             wrapText="true" />
+   </VBox>
+
+   <!-- Formulaire de saisie -->
+   <VBox spacing="15.0" styleClass="form-section">
+      <!-- Saisie IMEI -->
+      <VBox spacing="8.0">
+         <Label text="📱 Numéro IMEI *" styleClass="field-label">
+            <font>
+               <Font name="System Bold" size="13.0" />
+            </font>
+         </Label>
+         <TextField fx:id="txtIMEI" promptText="Saisissez le numéro IMEI (15 chiffres)" 
+                    styleClass="imei-field" prefWidth="300.0" />
+         <Label fx:id="lblIMEIInfo" text="💡 Pour trouver l'IMEI : *#06# ou Réglages → Général → Informations" 
+                styleClass="info-text" />
+      </VBox>
+
+      <!-- Sélection de plateforme -->
+      <VBox spacing="8.0">
+         <Label text="📱 Plateforme *" styleClass="field-label">
+            <font>
+               <Font name="System Bold" size="13.0" />
+            </font>
+         </Label>
+         <HBox spacing="20.0">
+            <RadioButton fx:id="radioIOS" text="🍏 iOS / iPadOS" toggleGroup="$platformGroup" 
+                         styleClass="platform-radio" selected="true" />
+            <RadioButton fx:id="radioAndroid" text="🤖 Android" toggleGroup="$platformGroup" 
+                         styleClass="platform-radio" />
+         </HBox>
+      </VBox>
+
+      <!-- Boutons de détection automatique -->
+      <HBox spacing="15.0" alignment="CENTER" styleClass="detection-buttons">
+         <Button fx:id="btnDetectUSB" onAction="#handleDetectUSB" 
+                 styleClass="detect-button" text="📱 Détecter iPhone USB" 
+                 prefWidth="180.0" />
+         <Button fx:id="btnRefreshInfo" onAction="#handleRefreshInfo" 
+                 styleClass="refresh-button" text="🔄 Actualiser Infos" 
+                 prefWidth="150.0" />
+      </HBox>
+
+      <!-- Informations détectées automatiquement -->
+      <VBox fx:id="detectedInfoSection" spacing="10.0" styleClass="detected-info-section" visible="false">
+         <Label text="📱 Informations Détectées Automatiquement" styleClass="section-title">
+            <font>
+               <Font name="System Bold" size="14.0" />
+            </font>
+         </Label>
+         
+         <GridPane hgap="15.0" vgap="8.0">
+            <columnConstraints>
+               <ColumnConstraints minWidth="120.0" />
+               <ColumnConstraints minWidth="200.0" />
+            </columnConstraints>
+            
+            <Label text="🏷️ Marque:" styleClass="info-label" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <Label fx:id="lblDetectedBrand" text="-" styleClass="info-value" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+            
+            <Label text="📋 Modèle:" styleClass="info-label" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+            <Label fx:id="lblDetectedModel" text="-" styleClass="info-value" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            
+            <Label text="🖥️ Plateforme:" styleClass="info-label" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+            <Label fx:id="lblDetectedPlatform" text="-" styleClass="info-value" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            
+            <Label text="📊 Version OS:" styleClass="info-label" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+            <Label fx:id="lblDetectedOS" text="-" styleClass="info-value" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            
+            <Label text="🔢 Numéro de série:" styleClass="info-label" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+            <Label fx:id="lblDetectedSerial" text="-" styleClass="info-value" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            
+            <Label text="🆔 Identifiant unique:" styleClass="info-label" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+            <Label fx:id="lblDetectedUID" text="-" styleClass="info-value" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+         </GridPane>
+      </VBox>
+
+      <!-- Informations DHRU API -->
+      <VBox fx:id="dhruInfoSection" spacing="10.0" styleClass="dhru-info-section" visible="false">
+         <Label text="🌐 Informations Détaillées (API DHRU)" styleClass="section-title">
+            <font>
+               <Font name="System Bold" size="14.0" />
+            </font>
+         </Label>
+         
+         <GridPane hgap="15.0" vgap="8.0">
+            <columnConstraints>
+               <ColumnConstraints minWidth="120.0" />
+               <ColumnConstraints minWidth="200.0" />
+            </columnConstraints>
+            
+            <Label text="💾 Capacité:" styleClass="info-label" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <Label fx:id="lblCapacity" text="-" styleClass="info-value" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+            
+            <Label text="🎨 Couleur:" styleClass="info-label" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+            <Label fx:id="lblColor" text="-" styleClass="info-value" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            
+            <Label text="☁️ Statut iCloud:" styleClass="info-label" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+            <Label fx:id="lblICloudStatus" text="-" styleClass="info-value" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            
+            <Label text="📡 Opérateur:" styleClass="info-label" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+            <Label fx:id="lblCarrier" text="-" styleClass="info-value" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            
+            <Label text="🌍 Pays d'origine:" styleClass="info-label" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+            <Label fx:id="lblCountry" text="-" styleClass="info-value" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            
+            <Label text="🛡️ Garantie:" styleClass="info-label" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+            <Label fx:id="lblWarranty" text="-" styleClass="info-value" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+         </GridPane>
+         
+         <Label text="✅ Informations récupérées via API DHRU Fusion" 
+                styleClass="success-message" />
+      </VBox>
+   </VBox>
+
+   <!-- Options avancées -->
+   <VBox spacing="10.0" styleClass="options-section">
+      <Label styleClass="section-title" text="⚙️ Options">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      
+      <CheckBox fx:id="chkSaveDevice" text="💾 Sauvegarder ces informations d'appareil" 
+                styleClass="option-checkbox" selected="true" />
+      <CheckBox fx:id="chkNotifyCompletion" text="📧 M'avertir par email quand le déblocage est terminé" 
+                styleClass="option-checkbox" selected="true" />
+   </VBox>
+
+   <!-- Avertissement -->
+   <VBox spacing="10.0" styleClass="warning-section">
+      <HBox spacing="10.0" alignment="CENTER_LEFT">
+         <Label text="⚠️" styleClass="warning-icon">
+            <font>
+               <Font size="16.0" />
+            </font>
+         </Label>
+         <Label text="Avertissement Important" styleClass="warning-title">
+            <font>
+               <Font name="System Bold" size="13.0" />
+            </font>
+         </Label>
+      </HBox>
+      
+      <VBox spacing="5.0">
+         <Label styleClass="warning-text" wrapText="true"
+                text="• Le déblocage IMEI peut prendre de 15 minutes à plusieurs heures selon l'appareil" />
+         <Label styleClass="warning-text" wrapText="true"
+                text="• Assurez-vous que l'IMEI est correct (15 chiffres)" />
+         <Label styleClass="warning-text" wrapText="true"
+                text="• Cette opération est irréversible" />
+         <Label styleClass="warning-text" wrapText="true"
+                text="• L'appareil doit être éteint pendant le processus" />
+      </VBox>
+   </VBox>
+
+   <!-- Estimation -->
+   <VBox spacing="8.0" styleClass="estimation-section">
+      <HBox spacing="15.0" alignment="CENTER_LEFT">
+         <VBox spacing="3.0">
+            <Label text="⏱️ Temps estimé:" styleClass="estimation-label">
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblEstimatedTime" text="15-45 minutes" styleClass="estimation-value" />
+         </VBox>
+         
+         <VBox spacing="3.0">
+            <Label text="📊 Taux de succès:" styleClass="estimation-label">
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblSuccessRate" text="98%" styleClass="estimation-value success-rate" />
+         </VBox>
+      </HBox>
+   </VBox>
+
+   <!-- Boutons d'action -->
+   <HBox spacing="15.0" alignment="CENTER" styleClass="buttons-section">
+      <Button fx:id="btnConfirmUnlock" onAction="#handleConfirmUnlock" 
+              styleClass="confirm-button" text="✅ Confirmer le Déblocage" 
+              prefWidth="200.0" disable="true" />
+      <Button fx:id="btnPasswordRecovery" onAction="#handlePasswordRecovery" 
+              styleClass="recovery-button" text="🔐 Récupérer Mot de Passe" 
+              prefWidth="180.0" />
+      <Button fx:id="btnCancel" onAction="#handleCancel" 
+              styleClass="cancel-button" text="❌ Annuler" 
+              prefWidth="120.0" />
+   </HBox>
+
+   <!-- Status et progress -->
+   <VBox fx:id="progressSection" spacing="10.0" styleClass="progress-section" visible="false">
+      <Label fx:id="lblStatus" text="Validation de l'IMEI en cours..." 
+             styleClass="status-label" />
+      <ProgressBar fx:id="progressBar" prefWidth="400.0" progress="0.0" />
+      <Label fx:id="lblProgressDetails" text="" styleClass="progress-details" />
+   </VBox>
+
+   <!-- Padding pour la VBox principale -->
+   <padding>
+      <Insets bottom="20.0" left="25.0" right="25.0" top="20.0" />
+   </padding>
+
+</VBox>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.logicielapp.controller.FlashController">
+   <top>
+      <VBox spacing="10.0" styleClass="flash-header" style="-fx-background-color: linear-gradient(to bottom, #2c3e50, #34495e); -fx-padding: 20;">
+         <Label text="Flashage de Firmware" textFill="WHITE" styleClass="page-title">
+            <font>
+               <Font name="System Bold" size="24.0" />
+            </font>
+         </Label>
+         <Label text="Flasher des firmwares iOS/Android et des partitions système" textFill="#ecf0f1" styleClass="subtitle">
+            <font>
+               <Font size="14.0" />
+            </font>
+         </Label>
+      </VBox>
+   </top>
+   
+   <center>
+     <ScrollPane fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED">
+        <content>
+           <VBox spacing="20.0" style="-fx-padding: 30;">
+         
+         <!-- Section Sélection d'Appareil -->
+         <VBox spacing="10.0">
+            <Label text="Appareil Cible" style="-fx-font-weight: bold; -fx-font-size: 16px;" />
+            <HBox spacing="10.0" alignment="CENTER_LEFT">
+               <ComboBox fx:id="deviceComboBox" prefWidth="300.0" promptText="Sélectionner un appareil connecté" />
+               <Button fx:id="detectDevicesBtn" text="Détecter" style="-fx-background-color: #3498db; -fx-text-fill: white;" />
+            </HBox>
+         </VBox>
+         
+         <!-- Section Type de Flashage -->
+         <VBox spacing="10.0">
+            <Label text="Type de Flashage" style="-fx-font-weight: bold; -fx-font-size: 16px;" />
+            <ComboBox fx:id="flashTypeComboBox" prefWidth="300.0" />
+         </VBox>
+         
+         <!-- Section Fichier Firmware -->
+         <VBox spacing="10.0">
+            <Label text="Fichier Firmware/Image" style="-fx-font-weight: bold; -fx-font-size: 16px;" />
+            <HBox spacing="10.0" alignment="CENTER_LEFT">
+               <TextField fx:id="firmwarePathField" prefWidth="400.0" promptText="Chemin vers le fichier firmware" />
+               <Button fx:id="browseFirmwareBtn" text="Parcourir" style="-fx-background-color: #27ae60; -fx-text-fill: white;" />
+            </HBox>
+         </VBox>
+         
+         <!-- Section Partition (conditionnelle) -->
+         <VBox spacing="10.0">
+            <Label text="Nom de la Partition" style="-fx-font-weight: bold; -fx-font-size: 16px;" />
+            <TextField fx:id="partitionNameField" prefWidth="200.0" promptText="ex: boot, recovery, system" />
+         </VBox>
+         
+         <!-- Section Actions -->
+         <HBox spacing="15.0" alignment="CENTER">
+            <Button fx:id="startFlashBtn" text="Démarrer le Flashage" prefWidth="150.0" 
+                    style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold;" />
+            <Button fx:id="cancelBtn" text="Annuler" prefWidth="100.0" 
+                    style="-fx-background-color: #95a5a6; -fx-text-fill: white;" />
+            <Button text="Retour" onAction="#goBack" prefWidth="100.0" 
+                    style="-fx-background-color: #7f8c8d; -fx-text-fill: white;" />
+         </HBox>
+         
+         <!-- Section Progression -->
+         <VBox spacing="10.0">
+            <Label text="Progression" style="-fx-font-weight: bold; -fx-font-size: 16px;" />
+            <ProgressBar fx:id="progressBar" prefWidth="500.0" progress="0.0" />
+            <Label fx:id="statusLabel" text="Prêt pour le flashage" style="-fx-font-size: 14px;" />
+         </VBox>
+         
+         <!-- Section Logs -->
+         <VBox spacing="10.0">
+            <Label text="Logs de Flashage" style="-fx-font-weight: bold; -fx-font-size: 16px;" />
+            <TextArea fx:id="logArea" prefHeight="200.0" editable="false" 
+                      style="-fx-font-family: 'Courier New'; -fx-font-size: 12px;" />
+         </VBox>
+         
+            </VBox>
+        </content>
+     </ScrollPane>
+  </center>
+   
+   <bottom>
+      <HBox alignment="CENTER" spacing="20.0" style="-fx-background-color: #ecf0f1; -fx-padding: 15;">
+         <Label text="⚠️ ATTENTION: Le flashage peut endommager votre appareil de façon permanente" 
+                style="-fx-text-fill: #e74c3c; -fx-font-weight: bold;" />
+      </HBox>
+   </bottom>
+</BorderPane>

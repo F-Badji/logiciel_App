@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="com.logicielapp.controller.OperationSelectorController"
+      spacing="20.0" styleClass="operation-selector">
+
+   <!-- Titre de la section -->
+   <Label styleClass="selector-title" text="🎯 Sélecteur d'Opération Intelligent">
+      <font>
+         <Font name="System Bold" size="18.0" />
+      </font>
+   </Label>
+
+   <!-- Informations sur l'appareil détecté -->
+   <VBox spacing="15.0" styleClass="device-info-card">
+      <Label styleClass="card-title" text="📱 Appareil Détecté">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      
+      <HBox spacing="20.0" alignment="CENTER_LEFT">
+         <!-- Image de l'appareil -->
+         <VBox alignment="CENTER" spacing="5.0">
+            <ImageView fx:id="deviceImageView" fitHeight="120.0" fitWidth="60.0" preserveRatio="true">
+               <image>
+                  <Image url="@../images/devices/iphone.svg" />
+               </image>
+            </ImageView>
+            <Label fx:id="lblBatteryLevel" styleClass="battery-label" text="🔋 75%">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+         </VBox>
+         
+         <!-- Informations détaillées -->
+         <GridPane hgap="15.0" vgap="8.0">
+         <Label text="Marque:" GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="info-label" />
+         <Label fx:id="lblDeviceBrand" text="Non détecté" GridPane.columnIndex="1" GridPane.rowIndex="0" styleClass="info-value" />
+         
+         <Label text="Modèle:" GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="info-label" />
+         <Label fx:id="lblDeviceModel" text="Non détecté" GridPane.columnIndex="1" GridPane.rowIndex="1" styleClass="info-value" />
+         
+         <Label text="Plateforme:" GridPane.columnIndex="0" GridPane.rowIndex="2" styleClass="info-label" />
+         <Label fx:id="lblDevicePlatform" text="Non détectée" GridPane.columnIndex="1" GridPane.rowIndex="2" styleClass="info-value platform-badge" />
+         
+         <Label text="Version OS:" GridPane.columnIndex="0" GridPane.rowIndex="3" styleClass="info-label" />
+         <Label fx:id="lblDeviceOS" text="Non disponible" GridPane.columnIndex="1" GridPane.rowIndex="3" styleClass="info-value" />
+         
+         <Label text="IMEI:" GridPane.columnIndex="0" GridPane.rowIndex="4" styleClass="info-label" />
+         <Label fx:id="lblDeviceIMEI" text="Non disponible" GridPane.columnIndex="1" GridPane.rowIndex="4" styleClass="info-value" />
+         
+         <Label text="Numéro de série:" GridPane.columnIndex="0" GridPane.rowIndex="5" styleClass="info-label" />
+         <Label fx:id="lblDeviceSerial" text="Non disponible" GridPane.columnIndex="1" GridPane.rowIndex="5" styleClass="info-value" />
+         
+         <Label text="Capacité:" GridPane.columnIndex="0" GridPane.rowIndex="6" styleClass="info-label" />
+         <Label fx:id="lblDeviceCapacity" text="Non disponible" GridPane.columnIndex="1" GridPane.rowIndex="6" styleClass="info-value" />
+         </GridPane>
+      </HBox>
+      
+      <!-- Badge de statut -->
+      <HBox alignment="CENTER_LEFT" spacing="10.0">
+         <Label fx:id="lblConnectionStatus" styleClass="connection-badge" text="🔌 Connecté via USB" />
+         <Label fx:id="lblCompatibilityStatus" styleClass="compatibility-badge" text="✅ Compatible" />
+      </HBox>
+   </VBox>
+
+   <!-- Opérations recommandées -->
+   <VBox spacing="15.0" styleClass="operations-card">
+      <Label styleClass="card-title" text="🔧 Opérations Recommandées">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      
+      <!-- iOS Operations -->
+      <VBox fx:id="iosOperationsPane" spacing="10.0" visible="false">
+         <Label styleClass="platform-section-title" text="🍏 Opérations iOS Disponibles">
+            <font>
+               <Font name="System Bold" size="13.0" />
+            </font>
+         </Label>
+         
+         <VBox spacing="8.0">
+            <RadioButton fx:id="radiOSiCloudBypass" styleClass="operation-radio" 
+                        text="🔓 Déblocage iCloud (Activation Lock)" toggleGroup="$operationType" />
+            <Label styleClass="operation-description" 
+                   text="Contourne le verrouillage d'activation iCloud. Compatible avec la plupart des versions iOS." />
+            
+            <RadioButton fx:id="radioiOSPasscodeUnlock" styleClass="operation-radio" 
+                        text="🔑 Déverrouillage Code d'Accès" toggleGroup="$operationType" />
+            <Label styleClass="operation-description" 
+                   text="Supprime le code PIN, mot de passe, Face ID ou Touch ID." />
+            
+            <RadioButton fx:id="radioiOSScreenTime" styleClass="operation-radio" 
+                        text="⏰ Bypass Temps d'Écran" toggleGroup="$operationType" />
+            <Label styleClass="operation-description" 
+                   text="Désactive les restrictions de temps d'écran et contrôle parental." />
+            
+            <RadioButton fx:id="radioiOSActivationLock" styleClass="operation-radio" 
+                        text="🛡️ Bypass Activation Lock" toggleGroup="$operationType" />
+            <Label styleClass="operation-description" 
+                   text="Contourne le verrouillage d'activation après réinitialisation." />
+         </VBox>
+      </VBox>
+
+      <!-- Android Operations -->
+      <VBox fx:id="androidOperationsPane" spacing="10.0" visible="false">
+         <Label styleClass="platform-section-title" text="🤖 Opérations Android Disponibles">
+            <font>
+               <Font name="System Bold" size="13.0" />
+            </font>
+         </Label>
+         
+         <VBox spacing="8.0">
+            <RadioButton fx:id="radioAndroidFRP" styleClass="operation-radio" 
+                        text="🔒 Contournement FRP (Factory Reset Protection)" toggleGroup="$operationType" />
+            <Label styleClass="operation-description" 
+                   text="Bypass de la protection Google après réinitialisation d'usine." />
+            
+            <RadioButton fx:id="radioAndroidPattern" styleClass="operation-radio" 
+                        text="🔢 Déblocage Motif/PIN/Mot de passe" toggleGroup="$operationType" />
+            <Label styleClass="operation-description" 
+                   text="Supprime le verrouillage d'écran (motif, PIN, empreinte)." />
+            
+            <RadioButton fx:id="radioAndroidSamsung" styleClass="operation-radio" 
+                        text="📱 Bypass Compte Samsung" toggleGroup="$operationType" />
+            <Label styleClass="operation-description" 
+                   text="Contourne la vérification du compte Samsung sur les appareils Galaxy." />
+            
+            <RadioButton fx:id="radioAndroidMi" styleClass="operation-radio" 
+                        text="🔶 Bypass Compte Mi (Xiaomi)" toggleGroup="$operationType" />
+            <Label styleClass="operation-description" 
+                   text="Contourne la vérification du compte Mi sur les appareils Xiaomi." />
+            
+            <RadioButton fx:id="radioAndroidBootloader" styleClass="operation-radio" 
+                        text="🔧 Déblocage Bootloader" toggleGroup="$operationType" />
+            <Label styleClass="operation-description" 
+                   text="Débloque le bootloader pour installation de ROM personnalisées." />
+         </VBox>
+      </VBox>
+      
+      <!-- Message si aucune opération disponible -->
+      <VBox fx:id="noOperationsPane" alignment="CENTER" spacing="10.0" visible="true">
+         <Label styleClass="no-operations-icon" text="📵">
+            <font>
+               <Font size="36.0" />
+            </font>
+         </Label>
+         <Label styleClass="no-operations-text" text="Aucun appareil détecté" textAlignment="CENTER">
+            <font>
+               <Font name="System Bold" size="14.0" />
+            </font>
+         </Label>
+         <Label styleClass="no-operations-subtitle" text="Connectez votre appareil via USB pour voir les opérations disponibles" 
+                textAlignment="CENTER" wrapText="true">
+            <font>
+               <Font size="12.0" />
+            </font>
+         </Label>
+      </VBox>
+   </VBox>
+
+   <!-- Options avancées -->
+   <VBox spacing="15.0" styleClass="advanced-options-card">
+      <Label styleClass="card-title" text="⚙️ Options Avancées">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      
+      <VBox spacing="10.0">
+         <CheckBox fx:id="chkPreserveData" styleClass="advanced-checkbox" 
+                  text="💾 Préserver les données utilisateur (si possible)" selected="true" />
+         <CheckBox fx:id="chkAdvancedMode" styleClass="advanced-checkbox" 
+                  text="🔬 Mode avancé (options expertes)" />
+         <CheckBox fx:id="chkBypassSecurity" styleClass="advanced-checkbox" 
+                  text="🛡️ Contourner les vérifications de sécurité" />
+         <CheckBox fx:id="chkCreateBackup" styleClass="advanced-checkbox" 
+                  text="💿 Créer une sauvegarde avant l'opération" selected="true" />
+      </VBox>
+   </VBox>
+
+   <!-- Estimation et avertissements -->
+   <VBox spacing="15.0" styleClass="estimation-card">
+      <HBox alignment="CENTER_LEFT" spacing="15.0">
+         <VBox spacing="5.0">
+            <Label styleClass="estimation-label" text="⏱️ Temps estimé:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblEstimatedTime" styleClass="estimation-value" text="Non calculé" />
+         </VBox>
+         
+         <VBox spacing="5.0">
+            <Label styleClass="estimation-label" text="📊 Taux de réussite:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblSuccessRate" styleClass="estimation-value" text="Non disponible" />
+         </VBox>
+         
+         <VBox spacing="5.0">
+            <Label styleClass="estimation-label" text="⚠️ Niveau de risque:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblRiskLevel" styleClass="risk-badge" text="Non évalué" />
+         </VBox>
+      </HBox>
+   </VBox>
+
+   <!-- Boutons d'action -->
+   <HBox alignment="CENTER" spacing="20.0" styleClass="action-buttons">
+      <Button fx:id="btnStartOperation" onAction="#handleStartOperation" 
+              styleClass="start-operation-button" text="🚀 Démarrer l'Opération" disable="true" />
+      <Button fx:id="btnAdvancedSettings" onAction="#handleAdvancedSettings" 
+              styleClass="advanced-settings-button" text="🔧 Paramètres Avancés" />
+      <Button fx:id="btnRefreshDevice" onAction="#handleRefreshDevice" 
+              styleClass="refresh-button" text="🔄 Actualiser l'Appareil" />
+   </HBox>
+
+   <!-- Padding pour la VBox principale -->
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+
+</VBox>

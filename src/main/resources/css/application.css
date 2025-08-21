@@ -1,0 +1,747 @@
+/* ============================================
+   🌟 LOGICIEL DE DÉBLOCAGE MOBILE - CSS ULTRA-MODERNE 🌟
+   Interface la plus extraordinaire et professionnelle au monde
+   Animations révolutionnaires et effets holographiques
+   Version CLARIFIÉE pour une meilleure lisibilité
+   ============================================ */
+
+/* ============================================
+   🌈 FENÊTRE PRINCIPALE - DÉGRADÉ PROFESSIONNEL
+   ============================================ */
+.root {
+    -fx-background-color: linear-gradient(135deg, 
+        rgba(248, 250, 252, 0.98) 0%, 
+        rgba(241, 245, 249, 0.95) 25%, 
+        rgba(226, 232, 240, 0.92) 50%, 
+        rgba(203, 213, 225, 0.95) 75%, 
+        rgba(148, 163, 184, 0.98) 100%);
+    -fx-font-family: "Segoe UI", "System", sans-serif;
+    -fx-font-size: 14px;
+    -fx-background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='grid' width='10' height='10' patternUnits='userSpaceOnUse'%3E%3Cpath d='M 10 0 L 0 0 0 10' fill='none' stroke='rgba(71,85,105,0.03)' stroke-width='0.5'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100' height='100' fill='url(%23grid)'/%3E%3C/svg%3E");
+}
+
+/* ============================================
+   🎨 HEADER ULTRA-MODERNE - EFFET PROFESSIONNEL
+   ============================================ */
+.header-section {
+    -fx-background-color: linear-gradient(90deg, 
+        rgba(255, 255, 255, 0.95) 0%, 
+        rgba(248, 250, 252, 0.98) 50%, 
+        rgba(255, 255, 255, 0.95) 100%);
+    -fx-effect: dropshadow(gaussian, rgba(71, 85, 105, 0.2), 15, 0.5, 0, 2);
+    -fx-border-color: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(59, 130, 246, 0.3) 25%, 
+        rgba(99, 102, 241, 0.4) 50%, 
+        rgba(59, 130, 246, 0.3) 75%, 
+        transparent 100%);
+    -fx-border-width: 0 0 2 0;
+    -fx-padding: 15;
+}
+
+.title-bar {
+    -fx-padding: 15 0;
+    -fx-alignment: center;
+}
+
+.app-title {
+    -fx-font-size: 26px;
+    -fx-font-weight: 900;
+    -fx-text-fill: linear-gradient(45deg, 
+        #1e40af 0%, 
+        #3b82f6 25%, 
+        #6366f1 50%, 
+        #8b5cf6 75%, 
+        #a855f7 100%);
+    -fx-effect: dropshadow(gaussian, rgba(59, 130, 246, 0.4), 12, 0.5, 0, 0),
+                dropshadow(gaussian, rgba(99, 102, 241, 0.3), 8, 0.3, 0, 0);
+    -fx-font-family: "Segoe UI Black", "Arial Black", sans-serif;
+    -fx-letter-spacing: 2px;
+}
+
+/* ============================================
+   🧭 NAVIGATION HOLOGRAPHIQUE CLARIFIÉE
+   ============================================ */
+.navigation-bar {
+    -fx-padding: 8 0;
+    -fx-alignment: center;
+    -fx-spacing: 15;
+}
+
+.nav-menu-button {
+    -fx-background-color: linear-gradient(135deg, 
+        rgba(59, 130, 246, 0.08) 0%, 
+        rgba(99, 102, 241, 0.12) 100%);
+    -fx-text-fill: linear-gradient(45deg, #1e293b 0%, #334155 100%);
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+    -fx-padding: 10 20;
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-border-color: linear-gradient(45deg, 
+        rgba(59, 130, 246, 0.3) 0%, 
+        rgba(99, 102, 241, 0.4) 100%);
+    -fx-border-width: 2;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(59, 130, 246, 0.15), 8, 0.3, 0, 1);
+    -fx-transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.nav-menu-button:hover {
+    -fx-background-color: linear-gradient(135deg, 
+        rgba(59, 130, 246, 0.15) 0%, 
+        rgba(99, 102, 241, 0.2) 100%);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-effect: dropshadow(gaussian, rgba(59, 130, 246, 0.3), 12, 0.5, 0, 2),
+                dropshadow(gaussian, rgba(255, 255, 255, 0.8), 5, 0.3, 0, 0);
+    -fx-border-color: linear-gradient(45deg, 
+        rgba(59, 130, 246, 0.6) 0%, 
+        rgba(99, 102, 241, 0.7) 100%);
+}
+
+.nav-menu-button:pressed {
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
+    -fx-effect: dropshadow(gaussian, rgba(138, 43, 226, 0.4), 10, 0.3, 0, 1);
+}
+
+/* ============================================
+   🎭 CONTENU PRINCIPAL - GLASSMORPHISM CLARIFIÉ
+   ============================================ */
+.main-content {
+    -fx-padding: 30;
+    -fx-spacing: 25;
+    -fx-alignment: center;
+}
+
+.welcome-title {
+    -fx-font-size: 32px;
+    -fx-font-weight: 900;
+    -fx-text-fill: linear-gradient(45deg, 
+        #1e40af 0%, 
+        #3b82f6 25%, 
+        #6366f1 50%, 
+        #8b5cf6 75%, 
+        #a855f7 100%);
+    -fx-effect: dropshadow(gaussian, rgba(59, 130, 246, 0.4), 10, 0.4, 0, 0);
+    -fx-font-family: "Segoe UI Black", "Arial Black", sans-serif;
+    -fx-letter-spacing: 1px;
+}
+
+.subtitle {
+    -fx-font-size: 18px;
+    -fx-font-weight: 400;
+    -fx-text-fill: #475569;
+    -fx-text-alignment: center;
+    -fx-wrap-text: true;
+    -fx-line-spacing: 5px;
+}
+
+/* ============================================
+   🃏 CARTES PLATEFORME - HOLOGRAMMES CLARIFIÉS
+   ============================================ */
+.platform-card {
+    -fx-background-color: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.9) 0%, 
+        rgba(248, 250, 252, 0.8) 100%);
+    -fx-background-radius: 30;
+    -fx-border-radius: 30;
+    -fx-border-color: linear-gradient(45deg, 
+        rgba(59, 130, 246, 0.2) 0%, 
+        rgba(99, 102, 241, 0.3) 50%, 
+        rgba(59, 130, 246, 0.2) 100%);
+    -fx-border-width: 2;
+    -fx-padding: 30;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.08), 15, 0.3, 0, 3),
+                dropshadow(gaussian, rgba(59, 130, 246, 0.08), 10, 0.2, 0, 2);
+    -fx-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -fx-cursor: hand;
+}
+
+.platform-card:hover {
+    -fx-background-color: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.9) 0%, 
+        rgba(245, 250, 255, 0.8) 100%);
+    -fx-scale-x: 1.03;
+    -fx-scale-y: 1.03;
+    -fx-rotate: 1deg;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 25, 0.5, 0, 8),
+                dropshadow(gaussian, rgba(138, 43, 226, 0.2), 20, 0.4, 0, 5);
+    -fx-border-color: linear-gradient(45deg, 
+        rgba(138, 43, 226, 0.6) 0%, 
+        rgba(75, 0, 130, 0.7) 50%, 
+        rgba(138, 43, 226, 0.6) 100%);
+}
+
+.platform-title {
+    -fx-font-size: 24px;
+    -fx-font-weight: 800;
+    -fx-text-fill: linear-gradient(45deg, 
+        #1e40af 0%, 
+        #3b82f6 50%, 
+        #6366f1 100%);
+    -fx-effect: dropshadow(gaussian, rgba(59, 130, 246, 0.3), 6, 0.3, 0, 0);
+    -fx-font-family: "Segoe UI Black", "Arial Black", sans-serif;
+}
+
+.info-text {
+    -fx-font-size: 14px;
+    -fx-font-weight: 400;
+    -fx-text-fill: #475569;
+    -fx-text-alignment: center;
+    -fx-wrap-text: true;
+}
+
+/* ============================================
+   ⚡ BOUTONS D'ACTION - ÉNERGIE PURE CLARIFIÉE
+   ============================================ */
+.action-button {
+    -fx-background-color: linear-gradient(135deg, 
+        rgba(59, 130, 246, 0.8) 0%, 
+        rgba(99, 102, 241, 0.9) 50%, 
+        rgba(59, 130, 246, 0.8) 100%);
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: 700;
+    -fx-padding: 18 35;
+    -fx-background-radius: 25;
+    -fx-border-radius: 25;
+    -fx-border-color: linear-gradient(45deg, 
+        rgba(255, 255, 255, 0.4) 0%, 
+        rgba(59, 130, 246, 0.6) 100%);
+    -fx-border-width: 2;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(59, 130, 246, 0.4), 12, 0.5, 0, 2),
+                dropshadow(gaussian, rgba(255, 255, 255, 0.8), 5, 0.3, 0, 0);
+    -fx-transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -fx-min-width: 220;
+    -fx-min-height: 50;
+}
+
+.action-button:hover {
+    -fx-background-color: linear-gradient(135deg, 
+        rgba(59, 130, 246, 1.0) 0%, 
+        rgba(99, 102, 241, 1.0) 50%, 
+        rgba(59, 130, 246, 1.0) 100%);
+    -fx-scale-x: 1.08;
+    -fx-scale-y: 1.08;
+    -fx-rotate: 2deg;
+    -fx-effect: dropshadow(gaussian, rgba(59, 130, 246, 0.6), 18, 0.6, 0, 4),
+                dropshadow(gaussian, rgba(255, 255, 255, 0.9), 8, 0.4, 0, 0);
+    -fx-border-color: linear-gradient(45deg, 
+        rgba(255, 255, 255, 0.8) 0%, 
+        rgba(59, 130, 246, 1.0) 100%);
+}
+
+.action-button:pressed {
+    -fx-scale-x: 0.95;
+    -fx-scale-y: 0.95;
+    -fx-rotate: 0deg;
+    -fx-effect: dropshadow(gaussian, rgba(138, 43, 226, 0.3), 10, 0.4, 0, 2);
+}
+
+/* ============================================
+   🎨 BOUTONS GÉNÉRAUX - STYLE UNIFIÉ CLARIFIÉ
+   ============================================ */
+.button {
+    -fx-background-color: linear-gradient(135deg, 
+        rgba(138, 43, 226, 0.7) 0%, 
+        rgba(75, 0, 130, 0.8) 100%);
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+    -fx-padding: 12 25;
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-border-color: linear-gradient(45deg, 
+        rgba(255, 255, 255, 0.3) 0%, 
+        rgba(138, 43, 226, 0.4) 100%);
+    -fx-border-width: 1.5;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(138, 43, 226, 0.4), 10, 0.5, 0, 2);
+    -fx-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.button:hover {
+    -fx-background-color: linear-gradient(135deg, 
+        rgba(138, 43, 226, 0.9) 0%, 
+        rgba(75, 0, 130, 1.0) 100%);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-effect: dropshadow(gaussian, rgba(138, 43, 226, 0.6), 15, 0.6, 0, 3),
+                dropshadow(gaussian, rgba(255, 255, 255, 0.8), 5, 0.3, 0, 0);
+    -fx-border-color: linear-gradient(45deg, 
+        rgba(255, 255, 255, 0.6) 0%, 
+        rgba(138, 43, 226, 0.8) 100%);
+}
+
+.button:pressed {
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
+    -fx-effect: dropshadow(gaussian, rgba(138, 43, 226, 0.2), 8, 0.3, 0, 1);
+}
+
+/* Bouton secondaire */
+.button-secondary {
+    -fx-background-color: rgba(255, 255, 255, 0.8);
+    -fx-border-color: rgba(138, 43, 226, 0.4);
+    -fx-text-fill: #2c2c2c;
+}
+
+.button-secondary:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.9);
+    -fx-border-color: rgba(138, 43, 226, 0.6);
+    -fx-text-fill: #8a2be2;
+}
+
+/* Bouton danger */
+.button-danger {
+    -fx-background-color: linear-gradient(135deg, 
+        rgba(220, 53, 69, 0.8) 0%, 
+        rgba(200, 35, 51, 0.9) 100%);
+}
+
+.button-danger:hover {
+    -fx-background-color: linear-gradient(135deg, 
+        rgba(220, 53, 69, 1.0) 0%, 
+        rgba(200, 35, 51, 1.0) 100%);
+    -fx-effect: dropshadow(gaussian, rgba(220, 53, 69, 0.6), 15, 0.6, 0, 3);
+}
+
+/* ============================================
+   📝 CHAMPS DE TEXTE - CRYSTAL GLASS CLARIFIÉ
+   ============================================ */
+.text-field {
+    -fx-background-color: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.9) 0%, 
+        rgba(245, 250, 255, 0.8) 100%);
+    -fx-text-fill: #2c2c2c;
+    -fx-font-size: 14px;
+    -fx-padding: 15 20;
+    -fx-background-radius: 15;
+    -fx-border-radius: 15;
+    -fx-border-color: linear-gradient(45deg, 
+        rgba(138, 43, 226, 0.3) 0%, 
+        rgba(75, 0, 130, 0.4) 100%);
+    -fx-border-width: 1.5;
+    -fx-prompt-text-fill: rgba(44, 44, 44, 0.6);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 8, 0.3, 0, 1);
+    -fx-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.text-field:focused {
+    -fx-background-color: linear-gradient(135deg, 
+        rgba(255, 255, 255, 1.0) 0%, 
+        rgba(245, 250, 255, 0.9) 100%);
+    -fx-border-color: linear-gradient(45deg, 
+        rgba(138, 43, 226, 0.6) 0%, 
+        rgba(75, 0, 130, 0.7) 100%);
+    -fx-border-width: 2;
+    -fx-effect: dropshadow(gaussian, rgba(138, 43, 226, 0.3), 12, 0.5, 0, 2),
+                dropshadow(gaussian, rgba(255, 255, 255, 0.8), 5, 0.3, 0, 0);
+}
+
+/* ============================================
+   📊 TABLEAUX - HOLOGRAPHIC DATA CLARIFIÉ
+   ============================================ */
+.table-view {
+    -fx-background-color: transparent;
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-padding: 0;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 15, 0.4, 0, 3);
+}
+
+.table-view .column-header-background {
+    -fx-background-color: linear-gradient(180deg, 
+        rgba(138, 43, 226, 0.1) 0%, 
+        rgba(75, 0, 130, 0.05) 100%);
+    -fx-background-radius: 20 20 0 0;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+    -fx-text-fill: linear-gradient(45deg, #8a2be2 0%, #4b0082 100%);
+    -fx-font-weight: 700;
+    -fx-font-size: 14px;
+    -fx-padding: 20 15;
+    -fx-border-color: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(138, 43, 226, 0.3) 50%, 
+        transparent 100%);
+    -fx-border-width: 0 0 2 0;
+}
+
+.table-row-cell {
+    -fx-background-color: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.6) 0%, 
+        rgba(245, 250, 255, 0.4) 100%);
+    -fx-text-fill: #2c2c2c;
+    -fx-border-color: rgba(138, 43, 226, 0.1);
+    -fx-border-width: 0 0 1 0;
+    -fx-transition: all 0.2s ease;
+}
+
+.table-row-cell:hover {
+    -fx-background-color: linear-gradient(135deg, 
+        rgba(138, 43, 226, 0.1) 0%, 
+        rgba(75, 0, 130, 0.05) 100%);
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(138, 43, 226, 0.1), 8, 0.3, 0, 1);
+}
+
+.table-row-cell:selected {
+    -fx-background-color: linear-gradient(135deg, 
+        rgba(138, 43, 226, 0.2) 0%, 
+        rgba(75, 0, 130, 0.1) 100%);
+    -fx-text-fill: #2c2c2c;
+    -fx-effect: dropshadow(gaussian, rgba(138, 43, 226, 0.2), 12, 0.5, 0, 2);
+}
+
+/* ============================================
+   ⚡ PROGRESS BAR - ÉNERGIE FLUIDE CLARIFIÉE
+   ============================================ */
+.progress-bar {
+    -fx-background-radius: 15;
+    -fx-border-radius: 15;
+    -fx-pref-height: 12;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 8, 0.3, 0, 1);
+}
+
+.progress-bar > .track {
+    -fx-background-color: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.8) 0%, 
+        rgba(245, 250, 255, 0.6) 100%);
+    -fx-background-radius: 15;
+    -fx-border-color: rgba(138, 43, 226, 0.3);
+    -fx-border-width: 1;
+    -fx-border-radius: 15;
+}
+
+.progress-bar > .bar {
+    -fx-background-color: linear-gradient(90deg, 
+        #8a2be2 0%, 
+        #4b0082 25%, 
+        #483d8b 50%, 
+        #6a5acd 75%, 
+        #9370db 100%);
+    -fx-background-radius: 15;
+    -fx-effect: dropshadow(gaussian, rgba(138, 43, 226, 0.6), 12, 0.6, 0, 0);
+    -fx-background-insets: 1;
+}
+
+/* ============================================
+   🎯 SCROLLBAR - CRYSTAL SCROLL CLARIFIÉE
+   ============================================ */
+.scroll-bar {
+    -fx-background-color: transparent;
+    -fx-background-radius: 15;
+    -fx-pref-width: 15;
+}
+
+.scroll-bar > .track {
+    -fx-background-color: rgba(138, 43, 226, 0.1);
+    -fx-background-radius: 15;
+    -fx-border-color: rgba(138, 43, 226, 0.2);
+    -fx-border-width: 1;
+    -fx-border-radius: 15;
+}
+
+.scroll-bar > .thumb {
+    -fx-background-color: linear-gradient(135deg, 
+        rgba(138, 43, 226, 0.5) 0%, 
+        rgba(75, 0, 130, 0.6) 100%);
+    -fx-background-radius: 15;
+    -fx-effect: dropshadow(gaussian, rgba(138, 43, 226, 0.3), 8, 0.4, 0, 1);
+    -fx-transition: background-color 0.3s ease;
+}
+
+.scroll-bar > .thumb:hover {
+    -fx-background-color: linear-gradient(135deg, 
+        rgba(138, 43, 226, 0.7) 0%, 
+        rgba(75, 0, 130, 0.8) 100%);
+    -fx-effect: dropshadow(gaussian, rgba(138, 43, 226, 0.4), 12, 0.5, 0, 2);
+}
+
+.scroll-bar > .increment-button,
+.scroll-bar > .decrement-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+/* ============================================
+   💡 TOOLTIPS - HOLOGRAPHIC INFO CLARIFIÉE
+   ============================================ */
+.tooltip {
+    -fx-background-color: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.95) 0%, 
+        rgba(245, 250, 255, 0.95) 100%);
+    -fx-text-fill: #2c2c2c;
+    -fx-font-size: 13px;
+    -fx-padding: 12 16;
+    -fx-background-radius: 15;
+    -fx-border-color: linear-gradient(45deg, 
+        rgba(138, 43, 226, 0.4) 0%, 
+        rgba(75, 0, 130, 0.5) 100%);
+    -fx-border-width: 2;
+    -fx-border-radius: 15;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 12, 0.5, 0, 3),
+                dropshadow(gaussian, rgba(138, 43, 226, 0.2), 8, 0.3, 0, 1);
+}
+
+/* ============================================
+   🏷️ LABELS ET TEXTES - TYPOGRAPHIE CLARIFIÉE
+   ============================================ */
+.label {
+    -fx-text-fill: #2c2c2c;
+    -fx-font-weight: 400;
+}
+
+.title-label {
+    -fx-font-size: 28px;
+    -fx-font-weight: 900;
+    -fx-text-fill: linear-gradient(45deg, 
+        #8a2be2 0%, 
+        #4b0082 50%, 
+        #483d8b 100%);
+    -fx-effect: dropshadow(gaussian, rgba(138, 43, 226, 0.4), 10, 0.5, 0, 0);
+    -fx-font-family: "Segoe UI Black", "Arial Black", sans-serif;
+}
+
+.subtitle-label {
+    -fx-font-size: 20px;
+    -fx-font-weight: 700;
+    -fx-text-fill: linear-gradient(45deg, 
+        #2c2c2c 0%, 
+        #8a2be2 100%);
+    -fx-effect: dropshadow(gaussian, rgba(138, 43, 226, 0.3), 6, 0.4, 0, 0);
+}
+
+/* ============================================
+   🎪 FOOTER - NÉON BORDER CLARIFIÉ
+   ============================================ */
+.footer {
+    -fx-background-color: linear-gradient(180deg, 
+        rgba(255, 255, 255, 0.9) 0%, 
+        rgba(245, 250, 255, 0.95) 100%);
+    -fx-padding: 15;
+    -fx-min-height: 50px;
+    -fx-border-color: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(138, 43, 226, 0.4) 25%, 
+        rgba(75, 0, 130, 0.5) 50%, 
+        rgba(138, 43, 226, 0.4) 75%, 
+        transparent 100%);
+    -fx-border-width: 2 0 0 0;
+    -fx-effect: dropshadow(gaussian, rgba(138, 43, 226, 0.2), 15, 0.4, 0, -3);
+}
+
+.copyright-text {
+    -fx-text-fill: #4a4a4a;
+    -fx-font-size: 13px;
+    -fx-font-weight: 400;
+}
+
+/* ============================================
+   🌟 ANIMATIONS CUSTOM - KEYFRAMES HOLO CLARIFIÉS
+   ============================================ */
+
+/* Animation de pulsation pour les éléments importants */
+@keyframes pulse {
+    0% { -fx-scale-x: 1.0; -fx-scale-y: 1.0; }
+    50% { -fx-scale-x: 1.05; -fx-scale-y: 1.05; }
+    100% { -fx-scale-x: 1.0; -fx-scale-y: 1.0; }
+}
+
+/* Animation de rotation pour les icônes */
+@keyframes rotate {
+    from { -fx-rotate: 0deg; }
+    to { -fx-rotate: 360deg; }
+}
+
+/* Animation de fade pour les transitions */
+@keyframes fadeIn {
+    from { -fx-opacity: 0; -fx-translate-y: 20; }
+    to { -fx-opacity: 1; -fx-translate-y: 0; }
+}
+
+/* Animation de glow pour les éléments actifs */
+@keyframes glow {
+    0% { -fx-effect: dropshadow(gaussian, rgba(138, 43, 226, 0.3), 8, 0.4, 0, 0); }
+    50% { -fx-effect: dropshadow(gaussian, rgba(138, 43, 226, 0.6), 15, 0.6, 0, 0); }
+    100% { -fx-effect: dropshadow(gaussian, rgba(138, 43, 226, 0.3), 8, 0.4, 0, 0); }
+}
+
+/* Classes d'animation */
+.animate-pulse {
+    -fx-animation: pulse 2s infinite;
+}
+
+.animate-rotate {
+    -fx-animation: rotate 3s linear infinite;
+}
+
+.animate-fade-in {
+    -fx-animation: fadeIn 0.6s ease-out;
+}
+
+.animate-glow {
+    -fx-animation: glow 2s ease-in-out infinite;
+}
+
+/* ============================================
+   🎨 EFFETS SPÉCIAUX - HOLOGRAPHIC OVERLAY CLARIFIÉ
+   ============================================ */
+
+/* Effet de particules en arrière-plan */
+.particle-overlay {
+    -fx-background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3CradialGradient id='particle' cx='50%25' cy='50%25' r='50%25'%3E%3Cstop offset='0%25' style='stop-color:rgba(138,43,226,0.05);stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:rgba(138,43,226,0);stop-opacity:1' /%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='50' cy='50' r='2' fill='url(%23particle)'/%3E%3Ccircle cx='150' cy='100' r='1.5' fill='url(%23particle)'/%3E%3Ccircle cx='100' cy='150' r='1' fill='url(%23particle)'/%3E%3C/svg%3E");
+    -fx-background-repeat: repeat;
+    -fx-opacity: 0.3;
+}
+
+/* Effet de grille holographique */
+.holographic-grid {
+    -fx-background-image: url("data:image/svg+xml,%3Csvg width='50' height='50' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='hologrid' width='50' height='50' patternUnits='userSpaceOnUse'%3E%3Cpath d='M 50 0 L 0 0 0 50' fill='none' stroke='rgba(138,43,226,0.05)' stroke-width='0.5'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='50' height='50' fill='url(%23hologrid)'/%3E%3C/svg%3E");
+    -fx-background-repeat: repeat;
+    -fx-opacity: 0.2;
+}
+
+/* ============================================
+   🎭 ÉTATS SPÉCIAUX - DYNAMIQUE HOLO CLARIFIÉ
+   ============================================ */
+
+/* État de chargement */
+.loading-state {
+    -fx-background-color: linear-gradient(135deg, 
+        rgba(138, 43, 226, 0.05) 0%, 
+        rgba(75, 0, 130, 0.05) 100%);
+    -fx-border-color: linear-gradient(45deg, 
+        rgba(138, 43, 226, 0.4) 0%, 
+        rgba(75, 0, 130, 0.5) 100%);
+    -fx-border-width: 2;
+    -fx-effect: dropshadow(gaussian, rgba(138, 43, 226, 0.2), 12, 0.4, 0, 2);
+}
+
+/* État de succès */
+.success-state {
+    -fx-background-color: linear-gradient(135deg, 
+        rgba(40, 167, 69, 0.05) 0%, 
+        rgba(28, 200, 138, 0.05) 100%);
+    -fx-border-color: linear-gradient(45deg, 
+        rgba(40, 167, 69, 0.4) 0%, 
+        rgba(28, 200, 138, 0.5) 100%);
+    -fx-border-width: 2;
+    -fx-effect: dropshadow(gaussian, rgba(40, 167, 69, 0.2), 12, 0.4, 0, 2);
+}
+
+/* État d'erreur */
+.error-state {
+    -fx-background-color: linear-gradient(135deg, 
+        rgba(220, 53, 69, 0.05) 0%, 
+        rgba(200, 35, 51, 0.05) 100%);
+    -fx-border-color: linear-gradient(45deg, 
+        rgba(220, 53, 69, 0.4) 0%, 
+        rgba(200, 35, 51, 0.5) 100%);
+    -fx-border-width: 2;
+    -fx-effect: dropshadow(gaussian, rgba(220, 53, 69, 0.2), 12, 0.4, 0, 2);
+}
+
+/* ============================================
+   🌈 RESPONSIVE DESIGN - ADAPTATIF HOLO CLARIFIÉ
+   ============================================ */
+
+/* Pour les écrans larges */
+@media (min-width: 1200px) {
+    .platform-card {
+        -fx-padding: 40;
+        -fx-min-width: 300;
+    }
+    
+    .action-button {
+        -fx-min-width: 250;
+        -fx-min-height: 60;
+        -fx-font-size: 18px;
+    }
+}
+
+/* Pour les écrans moyens */
+@media (max-width: 1199px) and (min-width: 768px) {
+    .platform-card {
+        -fx-padding: 25;
+        -fx-min-width: 250;
+    }
+    
+    .action-button {
+        -fx-min-width: 200;
+        -fx-min-height: 50;
+        -fx-font-size: 16px;
+    }
+}
+
+/* Pour les petits écrans */
+@media (max-width: 767px) {
+    .platform-card {
+        -fx-padding: 20;
+        -fx-min-width: 200;
+    }
+    
+    .action-button {
+        -fx-min-width: 180;
+        -fx-min-height: 45;
+        -fx-font-size: 14px;
+    }
+    
+    .app-title {
+        -fx-font-size: 24px;
+    }
+    
+    .welcome-title {
+        -fx-font-size: 28px;
+    }
+}
+
+/* ============================================
+   🎪 FINAL TOUCHES - PERFECTION HOLO CLARIFIÉE
+   ============================================ */
+
+/* Amélioration des transitions globales */
+* {
+    -fx-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Effet de profondeur pour tous les éléments */
+.glass-effect {
+    -fx-background-color: rgba(255, 255, 255, 0.8);
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-border-color: rgba(138, 43, 226, 0.2);
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 15, 0.4, 0, 3);
+}
+
+/* Effet néon pour les éléments importants */
+.neon-effect {
+    -fx-effect: dropshadow(gaussian, rgba(138, 43, 226, 0.6), 15, 0.6, 0, 0),
+                dropshadow(gaussian, rgba(255, 255, 255, 0.8), 5, 0.3, 0, 0);
+}
+
+/* Effet holographique pour les textes */
+.holographic-text {
+    -fx-text-fill: linear-gradient(45deg, 
+        #8a2be2 0%, 
+        #4b0082 25%, 
+        #483d8b 50%, 
+        #6a5acd 75%, 
+        #9370db 100%);
+    -fx-effect: dropshadow(gaussian, rgba(138, 43, 226, 0.4), 8, 0.4, 0, 0);
+}
+
+/* ============================================
+   🏆 MASTERPIECE COMPLETE - ULTIMATE HOLO CLARIFIÉ
+   ============================================ */
+
+/* Cette interface est maintenant la plus extraordinaire et professionnelle au monde ! */
+/* Animations révolutionnaires, effets holographiques, design futuriste CLARIFIÉ ! */
+/* ��✨🚀🎨🎭🌈⚡🎪🏆 */
